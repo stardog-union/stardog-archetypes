@@ -1,0 +1,45 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix var: <http://api.stardog.com/var#> .
+@prefix : <http://www.w3.org/ns/prov#> .
+
+# Inference 9  (wasStartedBy-inference) (contrapositive)
+
+:startedAtTime owl:propertyChainAxiom (:qualifiedStart :atTime) .
+
+# Inference 10 (wasEndedBy-inference) (contrapositive)
+
+:endedAtTime  owl:propertyChainAxiom (:qualifiedEnd :atTime) .
+	
+# Inference 16 (alternate-reflexive)
+# IF entity(e) THEN alternateOf(e,e).
+# This axiom is commented out since transitive properties cannot be defined reflexive
+#:Entity
+#    rdfs:subClassOf [
+#        a owl:Restriction ;
+#        owl:hasSelf true ;
+#        owl:onProperty :alternateOf
+#    ] .
+
+# Inference 17 (alternate-transitive)
+# IF alternateOf(e1,e2) and alternateOf(e2,e3) THEN alternateOf(e1,e3).
+
+:alternateOf a owl:TransitiveProperty . 
+
+# Inference 18 (alternate-symmetric)
+# IF alternateOf(e1,e2) THEN alternateOf(e2,e1).
+
+:alternateOf a owl:SymmetricProperty .
+
+# Inference 19 (specialization-transitive)
+# IF specializationOf(e1,e2) and specializationOf(e2,e3) THEN specializationOf(e1,e3).
+
+:specializationOf a owl:TransitiveProperty .
+
+# Inference 20 (specialization-alternate-inference)
+# IF specializationOf(e1,e2) THEN alternateOf(e1,e2).
+
+:specializationOf rdfs:subPropertyOf :alternateOf .

@@ -1,0 +1,2 @@
+prefix cim: <http://cloudinformationmodel.org/model/> 
+prefix sh: <http://www.w3.org/ns/shacl#>

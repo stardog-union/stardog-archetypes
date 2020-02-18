@@ -1,0 +1,252 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix icv: <tag:stardog:api:icv:> .
+
+# Typing info
+:atTime a owl:DatatypeProperty .
+:startedAtTime a owl:DatatypeProperty .
+:endedAtTime a owl:DatatypeProperty .
+
+# PROV DM constraints
+:Attribution
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty [owl:inverseOf :qualifiedAttribution]
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty :agent
+    ] .
+
+:Association
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty [owl:inverseOf :qualifiedAssociation]
+    ] .
+    
+:Communication
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty [owl:inverseOf :qualifiedCommunication]
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty :activity
+    ] .
+
+:Delegation
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty [owl:inverseOf :qualifiedDelegation]
+    ] .
+
+:Generation
+    rdfs:subClassOf [  
+        a owl:Class;
+            owl:unionOf ( 
+                [
+                    a owl:Restriction ;
+                    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+                    owl:onProperty [owl:inverseOf :qualifiedGeneration]
+                ] 
+                [
+                    a owl:Restriction ;
+                    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+                    owl:onProperty [owl:inverseOf :hadGeneration]
+                ] 
+    ) 
+                           ] 
+.
+
+[]
+    a owl:Class ;
+    owl:intersectionOf ( 
+        :Influence
+        [ a owl:Class ; 
+          owl:complementOf [  a owl:Class;
+                              owl:unionOf ( :ActivityInfluence :AgentInfluence :EntityInfluence ) 
+                           ]
+        ]                   
+        ) ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty [owl:inverseOf :qualifiedInfluence]
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty :influencer
+    ] .
+
+:Usage
+    rdfs:subClassOf [  
+        a owl:Class;
+            owl:unionOf ( 
+                [
+                    a owl:Restriction ;
+                    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+                    owl:onProperty [owl:inverseOf :qualifiedUsage]
+                ] 
+                [
+                    a owl:Restriction ;
+                    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+                    owl:onProperty [owl:inverseOf :hadUsage]
+                ] 
+    ) 
+                           ] .
+
+# Constraint 23
+:influencer  
+    a owl:FunctionalProperty .
+    
+:hadActivity  
+    a owl:FunctionalProperty .
+    
+:qualifiedInfluence  
+    a owl:InverseFunctionalProperty .
+        
+:hadPlan  
+    a owl:FunctionalProperty . 
+        
+:atTime  
+    a owl:FunctionalProperty .   
+
+# Constraint 24 (unique-generation)
+[] a icv:Constraint ;
+   icv:query """
+			PREFIX : <http://www.w3.org/ns/prov#> 	
+			SELECT DISTINCT *
+			FROM <tag:stardog:api:context:all>
+			WHERE {
+			?x2 :qualifiedGeneration ?x0 .
+			?x2 :qualifiedGeneration ?x1 .
+			?x0 :activity ?x3 .
+			?x1 :activity ?x3 .
+			OPTIONAL { ?x0 :atTime ?t0 }
+			OPTIONAL { ?x1 :atTime ?t1 }
+			FILTER ((isURI(?x0) && isURI(?x1) && ?x0 != ?x1) || (bound(?t0) && bound(?t1) && ?t0 != ?t1))
+			}""" . 
+			    
+# Constraint 25 (unique-invalidation) 
+[] a icv:Constraint ;
+   icv:query """
+			PREFIX : <http://www.w3.org/ns/prov#> 	
+			SELECT DISTINCT *
+			FROM <tag:stardog:api:context:all>
+			WHERE {
+			?x2 :qualifiedInvalidation ?x0 .
+			?x2 :qualifiedInvalidation ?x1 .
+			?x0 :activity ?x3 .
+			?x1 :activity ?x3 .
+			OPTIONAL { ?x0 :atTime ?t0 }
+			OPTIONAL { ?x1 :atTime ?t1 }
+			FILTER ((isURI(?x0) && isURI(?x1) && ?x0 != ?x1) || (bound(?t0) && bound(?t1) && ?t0 != ?t1))
+			}""" .    
+
+# Constraint 26 (unique-wasStartedBy)
+#:Start owl:hasKey ([owl:inverseOf :qualifiedStart] :hadActivity) .
+[] a icv:Constraint ;
+   icv:query """
+			PREFIX : <http://www.w3.org/ns/prov#> 	
+			SELECT DISTINCT *
+			FROM <tag:stardog:api:context:all>
+			WHERE {
+			?x0 a :Start .
+			?x1 a :Start .
+			?x2 :qualifiedStart ?x0 .
+			?x2 :qualifiedStart ?x1 .
+			?x0 :hadActivity ?x3 .
+			?x1 :hadActivity ?x3 .
+			FILTER (isURI(?x0) && isURI(?x1) && ?x0 != ?x1)
+			}""" .
+			
+# Constraint 27
+#:End owl:hasKey ([owl:inverseOf :qualifiedEnd] :hadActivity) .
+[] a icv:Constraint ;
+   icv:query """
+	PREFIX : <http://www.w3.org/ns/prov#> 	
+	SELECT DISTINCT *
+	FROM <tag:stardog:api:context:all>
+	WHERE {
+	?x0 a :End .
+	?x1 a :End .
+			?x2 :qualifiedEnd ?x0 .
+			?x2 :qualifiedEnd ?x1 .
+			?x0 :hadActivity ?x3 .
+			?x1 :hadActivity ?x3 .
+			FILTER (isURI(?x0) && isURI(?x1) && ?x0 != ?x1)
+			}""" .
+
+# Constraint 28
+:startedAtTime  
+    a owl:FunctionalProperty .   
+
+# Constraint 29
+:endedAtTime  
+    a owl:FunctionalProperty .
+        
+# Constraint 51 
+[]
+    a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty :hadGeneration ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty :hadActivity
+    ] .
+    
+[]
+    a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty :hadUsage ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty :hadActivity
+    ] .    
+ 
+# Constraint 52
+:specializationOf
+    a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+    
+# Constraint 53
+[]
+    a owl:AllDisjointClasses ;
+    owl:members ( :Usage :Generation :Invalidation :Start :End :Communication :Derivation :Attribution :Association :Delegation )
+.    
+    
+# Constraint 54
+:Entity 
+	owl:disjointWith :Usage, :Generation, :Invalidation, :Influence, :Start, :End, :Communication , :Derivation, :Attribution, :Association, :Delegation
+.    
+
+:Activity
+	owl:disjointWith :Usage, :Generation, :Invalidation, :Influence, :Start, :End, :Communication , :Derivation, :Attribution, :Association, :Delegation
+.
+
+:Agent 
+	owl:disjointWith :Usage, :Generation, :Invalidation, :Influence, :Start, :End, :Communication , :Derivation, :Attribution, :Association, :Delegation
+.
+
+# Constraint 55
+:Entity
+	owl:disjointWith :Activity .
+
+# Constraint 56
+:EmptyCollection
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+        owl:onProperty :hadMember
+    ] .
