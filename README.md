@@ -27,8 +27,8 @@ $ stardog-admin db create -o database.archetypes="cim" -n db
 
 The archetype definitions can be stored in a different location other than the 
 `${STARDOG_HOME}/.archetypes` folder. In that case the `archetypes.dir` property 
-should be set in `${STARDOG_HOME}/.stardog.properties` to point to that folder. 
-Note that, changes to `${STARDOG_HOME}/.stardog.properties`  take effect after 
+should be set in `${STARDOG_HOME}/stardog.properties` to point to that folder.
+Note that, changes to `${STARDOG_HOME}/stardog.properties` take effect after
 a restart.
 
 
@@ -41,7 +41,7 @@ An archetype definition is composed of
 * A configuration file
 * Zero or more namespaces
 * Zero or more schema files
-* Zero or more constraint files definition
+* Zero or more constraint files
 
 The archetype definition is provided using the following folder structure:
 
@@ -67,7 +67,8 @@ named graph for loading the schema contents if the schema is defined to be inlin
 The following configuration options can be set in the `archetype.properties` file:
 
 * `iri`: This sets the IRI for the archetype. If this value is not defined then the namespace
-declaration from `namespaces.ttl` will be used or an error will occur.
+declaration from `namespaces.ttl` for the prefix name corresponding to the archetype name
+will be used.
 * `schema.inline`: Boolean value specifying if the schema contents will be loaded in
 the database. The default value is true.
 * `schema.graph`: The target named graph for storing the inline schema. This option
@@ -84,5 +85,5 @@ the constraints will be loaded to the `schema.graph` target.
 
 The releases for this repository are named `YYYY.MM.N` based on the year and the month of the
 release date where `N` is a 0-based counter incremented for each subsequent release done during
-the month. There are no formal backward-compatability guarantees with respect to schemas and
+the month. There are no formal backward-compatibility guarantees with respect to schemas and
 constraints in these releases.
