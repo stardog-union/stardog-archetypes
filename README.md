@@ -79,3 +79,10 @@ constraints this property should be set to `false`.
 * `constraints.graph`: The target named graph for storing the inline constraints. This option
 has no effect if the `constraints.inline` option is false. If this option is not set, by default,
 the constraints will be loaded to the `schema.graph` target.
+
+## Releases and Versioning
+
+The releases for this repository are named `YYYY.MM.N` based on the year and the month of the
+release date where `N` is a 0-based counter incremented for each subsequent release done during
+the month. There are no formal backward-compatability guarantees with respect to schemas and
+constraints in these releases.
