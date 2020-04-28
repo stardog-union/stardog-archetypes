@@ -1,0 +1,1 @@
+prefix geof: <http://www.opengis.net/def/function/geosparql/>

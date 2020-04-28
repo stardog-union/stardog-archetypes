@@ -1,0 +1,1 @@
+# Geosparql function Archetype
