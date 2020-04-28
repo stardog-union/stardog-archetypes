@@ -1,0 +1,130 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix api:   <http://purl.org/linked-data/api/vocab#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix policy: <http://www.opengis.net/def/metamodel/ogc-na/> .
+
+<http://www.opengis.net/def/function/geosparql/rcc8dc>
+        rdfs:label  "disconnected"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfCrosses>
+        rdfs:label  "crosses"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfDisjoint>
+        rdfs:label  "disjoint"@en .
+
+<http://www.opengis.net/def/function/geosparql/rcc8ntppi>
+        rdfs:label  "non-tangential proper part inverse"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehCoveredBy>
+        rdfs:label  "covered by"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehCovers>
+        rdfs:label  "covers"@en .
+
+<http://www.opengis.net/def/function/geosparql/rcc8tpp>
+        rdfs:label  "tangential proper part"@en .
+
+<http://www.opengis.net/def/function/geosparql/intersection>
+        rdfs:label  "intersection"@en .
+
+<http://www.opengis.net/def/function/geosparql/distance>
+        rdfs:label  "distance"@en .
+
+<http://www.opengis.net/def/function/geosparql/buffer>
+        rdfs:label  "buffer"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfOverlaps>
+        rdfs:label  "overlaps"@en .
+
+<http://www.opengis.net/def/function/geosparql/>
+        a                      skos:Collection ;
+        rdfs:label             "GeoSPARQL Functions\t" ;
+        rdfs:seeAlso           <http://www.opengis.net/doc/geosparql/1.0> ;
+        dc:source              <http://www.opengis.net/doc/geosparql/1.0> ;
+        skos:member            <http://www.opengis.net/def/function/geosparql/sfIntersects> , <http://www.opengis.net/def/function/geosparql/distance> , <http://www.opengis.net/def/function/geosparql/union> , <http://www.opengis.net/def/function/geosparql/ehOverlap> , <http://www.opengis.net/def/function/geosparql/ehInside> , <http://www.opengis.net/def/function/geosparql/convexHull> , <http://www.opengis.net/def/function/geosparql/sfOverlaps> , <http://www.opengis.net/def/function/geosparql/rcc8eq> , <http://www.opengis.net/def/function/geosparql/rcc8ec> , <http://www.opengis.net/def/function/geosparql/relate> , <http://www.opengis.net/def/function/geosparql/difference> , <http://www.opengis.net/def/function/geosparql/rcc8tpp> , <http://www.opengis.net/def/function/geosparql/sfEquals> , <http://www.opengis.net/def/function/geosparql/buffer> , <http://www.opengis.net/def/function/geosparql/ehEquals> , <http://www.opengis.net/def/function/geosparql/ehDisjoint> , <http://www.opengis.net/def/function/geosparql/ehContains> , <http://www.opengis.net/def/function/geosparql/sfCrosses> , <http://www.opengis.net/def/function/geosparql/rcc8ntpp> , <http://www.opengis.net/def/function/geosparql/rcc8tppi> , <http://www.opengis.net/def/function/geosparql/symDifference> , <http://www.opengis.net/def/function/geosparql/sfWithin> , <http://www.opengis.net/def/function/geosparql/sfContains> , <http://www.opengis.net/def/function/geosparql/sfTouches> , <http://www.opengis.net/def/function/geosparql/getSRID> , <http://www.opengis.net/def/function/geosparql/ehCovers> , <http://www.opengis.net/def/function/geosparql/ehMeet> , <http://www.opengis.net/def/function/geosparql/ehCoveredBy> , <http://www.opengis.net/def/function/geosparql/rcc8ntppi> , <http://www.opengis.net/def/function/geosparql/rcc8po> , <http://www.opengis.net/def/function/geosparql/envelope> , <http://www.opengis.net/def/function/geosparql/sfDisjoint> , <http://www.opengis.net/def/function/geosparql/intersection> , <http://www.opengis.net/def/function/geosparql/rcc8dc> , <http://www.opengis.net/def/function/geosparql/boundary> ;
+        skos:prefLabel         "GeoSPARQL Functions\t" ;
+        foaf:isPrimaryTopicOf  <http://defs.opengis.net/elda-common/ogc-def/resource.ttl?uri=http://www.opengis.net/def/function/geosparql/> .
+
+<http://www.opengis.net/def/function/geosparql/convexHull>
+        rdfs:label  "convex hull"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehInside>
+        rdfs:label  "inside"@en .
+
+<http://www.opengis.net/def/function/geosparql/rcc8tppi>
+        rdfs:label  "tangential proper part inverse"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfEquals>
+        rdfs:label  "equals"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehContains>
+        rdfs:label  "contains"@en .
+
+<http://www.opengis.net/def/function/geosparql/difference>
+        rdfs:label  "difference"@en .
+
+<http://www.opengis.net/def/function/geosparql>
+        policy:collectionView  <http://www.opengis.net/def/function/geosparql/> .
+
+<http://www.opengis.net/def/function/geosparql/union>
+        rdfs:label  "union"@en .
+
+<http://www.opengis.net/def/function/geosparql/rcc8eq>
+        rdfs:label  "equals"@en .
+
+<http://www.opengis.net/def/function/geosparql/rcc8ntpp>
+        rdfs:label  "non-tangential proper part"@en .
+
+<http://www.opengis.net/def/function/geosparql/relate>
+        rdfs:label  "relate"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehEquals>
+        rdfs:label  "equals"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfContains>
+        rdfs:label  "contains"@en .
+
+<http://www.opengis.net/def/function/geosparql/getSRID>
+        rdfs:label  "getSRID"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfTouches>
+        rdfs:label  "touches"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfWithin>
+        rdfs:label  "within"@en .
+
+<http://www.opengis.net/def/function/geosparql/rcc8po>
+        rdfs:label  "partially overlapping"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehOverlap>
+        rdfs:label  "overlap"@en .
+
+<http://www.opengis.net/def/function/geosparql/symDifference>
+        rdfs:label  "symmetric difference"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehMeet>
+        rdfs:label  "meet"@en .
+
+<http://www.opengis.net/def/function/geosparql/sfIntersects>
+        rdfs:label  "intersects"@en .
+
+<http://www.opengis.net/def/function/geosparql/ehDisjoint>
+        rdfs:label  "disjoint"@en .
+
+<http://www.opengis.net/def/function/geosparql/envelope>
+        rdfs:label  "envelope"@en .
+
+<http://www.opengis.net/def/function/geosparql/boundary>
+        rdfs:label  "boundary"@en .
+
+<http://www.opengis.net/def/function/geosparql/rcc8ec>
+        rdfs:label  "externally connected"@en .
+
+<http://defs.opengis.net/elda-common/ogc-def/resource.ttl?uri=http://www.opengis.net/def/function/geosparql/>
+        a                            api:ItemEndpoint , api:Page ;
+        api:definition               <http://defs.opengis.net/elda-common/ogc-def/resource.ttl?uri=http://www.opengis.net/def/function/geosparql/> ;
+        api:extendedMetadataVersion  <http://defs.opengis.net/elda-common/ogc-def/resource.ttl?_metadata=all&uri=http://www.opengis.net/def/function/geosparql/> ;
+        foaf:primaryTopic            <http://www.opengis.net/def/function/geosparql/> .
