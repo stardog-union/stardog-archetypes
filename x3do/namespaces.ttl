@@ -1,0 +1,3 @@
+prefix x3do:   <http://www.web3d.org/specifications/X3dOntology4.0#> 
+prefix x3d:    <http://www.web3d.org/specifications/x3d-4.0.xsd#>
+prefix dc:     <http://purl.org/dc/terms/> 
