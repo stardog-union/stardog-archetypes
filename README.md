@@ -1,10 +1,12 @@
 # Stardog Archetypes
 
 This repository contains a set of [database archetypes](https://www.stardog.com/docs/#_database_archetypes) 
-to be used with the [Stardog](http://stardog.com) Knowledge Graph platform. 
+to be used with the [Stardog Knowledge Graph platform](http://stardog.com). 
 Please read the [docs](https://www.stardog.com/docs/#_database_archetypes) to
 learn the details of archetypes. The purpose of this repository is to be central
-location for commonly used archetypes as a convenience for Stardog users.
+location for commonly used archetypes as a convenience for Stardog users. 
+
+You need Stardog 7.2.0 or newer to use the archetypes defined in this repository.
 
 ## Using Archetypes
 
