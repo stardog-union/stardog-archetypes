@@ -1,0 +1,267 @@
+@prefix crs: <http://def.seegrid.csiro.au/isotc211/iso19111/2008/crs/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix def: <http://www.opengis.net/def/> .
+@prefix eo: <http://www.opengis.net/def/eo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix policy: <http://www.opengis.net/def/metamodel/ogc-na/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix status: <http://www.opengis.net/def/status/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://www.opengis.net/def/uom>
+  rdf:type skos:ConceptScheme ;
+  rdfs:label "units of measure definitions"^^xsd:string ;
+  skos:prefLabel "units of measure definitions" ;
+    policy:collectionView <http://www.opengis.net/def/uom/> ;
+.
+
+<http://www.opengis.net/def/uom/>
+  skos:member <http://www.opengis.net/def/uom/OGC/> ;
+  skos:member <http://www.opengis.net/def/uom/UCUM/> ;
+  rdf:type skos:Collection ;
+  dc:source "ISO 10000"^^xsd:string ;
+  dcterms:created "2012-02-14"^^xsd:date ;
+  rdfs:label "units of measure" ;
+  skos:member <http://www.opengis.net/def/uom/EPSG/> ;
+  skos:member <http://www.opengis.net/def/uom/SI/> ;
+.
+<http://www.opengis.net/def/uom/EPSG/>
+  rdf:type skos:Collection ;
+  rdfs:label "EPSG units of measure"^^xsd:string ;
+  owl:sameAs <http://www.opengis.net/def/uom/epsg/> ;
+
+.
+<http://www.opengis.net/def/uom/epsg/>
+  rdf:type skos:Collection ;
+.
+
+
+
+<http://www.opengis.net/def/uom/OGC/>
+  rdf:type skos:Collection ;
+  dcterms:created "2012-02-14"^^xsd:date ;
+  rdfs:label "OGC Units of Measure" ;
+  owl:sameAs <http://www.opengis.net/def/uom/ogc/> ;
+  skos:member <http://www.opengis.net/def/uom/OGC/1.0/> ;
+.
+<http://www.opengis.net/def/uom/OGC/1.0>
+  owl:sameAs <http://www.opengis.net/def/uom/OGC/1.0/> ;
+.
+<http://www.opengis.net/def/uom/OGC/1.0/>
+  rdf:type skos:Collection ;
+  dcterms:created "2012-02-14"^^xsd:date ;
+  rdfs:label "OGC Units of Measure 1.0" ;
+  owl:sameAs <http://www.opengis.net/def/uom/ogc/1.0/> ;
+  skos:member <http://www.opengis.net/def/uom/OGC/1.0/GridSpacing> ;
+  skos:member <http://www.opengis.net/def/uom/OGC/1.0/degree> ;
+  skos:member <http://www.opengis.net/def/uom/OGC/1.0/metre> ;
+  skos:member <http://www.opengis.net/def/uom/OGC/1.0/radian> ;
+  skos:member <http://www.opengis.net/def/uom/OGC/1.0/unity> ;
+.
+<http://www.opengis.net/def/uom/OGC/1.0/GridSpacing>
+  rdf:type skos:Concept ;
+  dc:creator "Arliss Whiteside" ;
+  dc:date "2010-03-23" ;
+  dcterms:created "2010-03-23" ;
+  dcterms:modified "2012-02-14"^^xsd:date ;
+  policy:status status:valid ;
+  rdfs:label "grid spacing"@en ;
+  owl:sameAs <http://www.opengis.net/def/uom/ogc/1.0/gridspacing> ;
+  skos:definition "Spacing between adjacent grid lines, or between centers of adjacent pixels"@en ;
+  skos:inScheme def:scheme ;
+  skos:prefLabel "grid spacing"@en ;
+.
+<http://www.opengis.net/def/uom/OGC/1.0/degree>
+  rdf:type skos:Concept ;
+  dc:creator "Arliss Whiteside" ;
+  dc:date "2010-03-23" ;
+  dc:source "OGC 07-092r3 Table 9"^^xsd:string ;
+  dcterms:created "2010-03-23" ;
+  dcterms:modified "2012-02-14"^^xsd:date ;
+  policy:status status:valid ;
+  rdfs:label "degree"@en ;
+  rdfs:seeAlso <http://www.opengis.net/doc/urn-def/1.3#Table-9> ;
+  owl:sameAs <http://www.opengis.net/def/uom/UCUM/0/deg> ;
+  owl:sameAs <http://www.opengis.net/def/uom/ogc/1.0/degree> ;
+  skos:definition "Angular degree"@en ;
+  skos:inScheme def:scheme ;
+  skos:prefLabel "degree"@en ;
+.
+<http://www.opengis.net/def/uom/OGC/1.0/metre>
+  rdf:type skos:Concept ;
+  dc:creator "Arliss Whiteside" ;
+  dc:date "2010-03-23" ;
+  dc:source "OGC 07-092r3 Table 9"^^xsd:string ;
+  dcterms:created "2010-03-23" ;
+  dcterms:modified "2012-02-14"^^xsd:date ;
+  policy:status status:valid ;
+  rdfs:label "meter"@en-us ;
+  rdfs:label "metre"@en ;
+  rdfs:seeAlso <http://www.opengis.net/doc/urn-def/1.3#Table-9> ;
+  owl:sameAs <http://www.opengis.net/def/uom/UCUM/0/m> ;
+  owl:sameAs <http://www.opengis.net/def/uom/ogc/1.0/metre> ;
+  skos:definition "The metre is the length of the path travelled by light in vacuum during a time interval of 1/299 792 458 of a second."@en ;
+  skos:inScheme def:scheme ;
+  skos:prefLabel "meter"@en-us ;
+  skos:prefLabel "metre"@en ;
+.
+<http://www.opengis.net/def/uom/OGC/1.0/radian>
+  rdf:type skos:Concept ;
+  dc:creator "Arliss Whiteside" ;
+  dc:date "2010-03-23" ;
+  dc:source "OGC 07-092r3 Table 9"^^xsd:string ;
+  dcterms:created "2010-03-23" ;
+  dcterms:modified "2012-02-14"^^xsd:date ;
+  policy:status status:valid ;
+  rdfs:label "radian"@en ;
+  rdfs:seeAlso <http://www.opengis.net/doc/urn-def/1.3#Table-9> ;
+  owl:sameAs <http://www.opengis.net/def/uom/UCUM/0/radian> ;
+  owl:sameAs <http://www.opengis.net/def/uom/ogc/1.0/radian> ;
+  skos:definition "Angular radian"@en ;
+  skos:inScheme def:scheme ;
+  skos:prefLabel "radian"@en ;
+.
+<http://www.opengis.net/def/uom/OGC/1.0/unity>
+  rdf:type skos:Concept ;
+  dc:creator "Arliss Whiteside" ;
+  dc:date "2010-03-23" ;
+  dc:source "OGC 07-092r3 Table 9"^^xsd:string ;
+  dcterms:created "2010-03-23" ;
+  dcterms:modified "2012-02-14"^^xsd:date ;
+  policy:status status:valid ;
+  rdfs:label "unity"@en ;
+  rdfs:seeAlso <http://www.opengis.net/doc/urn-def/1.3#Table-9> ;
+  owl:sameAs <http://www.opengis.net/def/uom/ogc/1.0/unity> ;
+  skos:definition "unitless ratio of two quantities with the same units"@en ;
+  skos:inScheme def:scheme ;
+  skos:prefLabel "unity"@en ;
+.
+<http://www.opengis.net/def/uom/UCUM>
+  owl:sameAs <http://www.opengis.net/def/uom/UCUM/> ;
+.
+<http://www.opengis.net/def/uom/UCUM/>
+  rdf:type skos:Collection ;
+  dcterms:created "2012-02-14"^^xsd:date ;
+  rdfs:label "UCUM Units of Measure" ;
+  owl:sameAs <http://www.opengis.net/def/uom/ucum/> ;
+  skos:member <http://www.opengis.net/def/uom/UCUM/0/> ;
+.
+<http://www.opengis.net/def/uom/UCUM/0>
+  owl:sameAs <http://www.opengis.net/def/uom/UCUM/0/> ;
+.
+<http://www.opengis.net/def/uom/UCUM/0/>
+  rdf:type skos:Collection ;
+  dcterms:created "2012-02-14"^^xsd:date ;
+  rdfs:label "UCUM Units of Measure 0" ;
+  rdfs:seeAlso <http://aurora.regenstrief.org/~ucum/ucum.html> ;
+  owl:sameAs <http://www.opengis.net/def/uom/ucum/0/> ;
+.
+<http://www.opengis.net/def/uom/ogc/>
+  rdf:type skos:Collection ;
+.
+<http://www.opengis.net/def/uom/ogc/1.0/>
+  rdf:type skos:Collection ;
+.
+<http://www.opengis.net/def/uom/ogc/1.0/degree>
+  rdf:type skos:Concept ;
+  policy:status status:valid ;
+  owl:sameAs <http://www.opengis.net/def/uom/OGC/1.0/degree> ;
+.
+<http://www.opengis.net/def/uom/ogc/1.0/gridspacing>
+  rdf:type skos:Concept ;
+  policy:status status:valid ;
+  owl:sameAs <http://www.opengis.net/def/uom/OGC/1.0/GridSpacing> ;
+.
+<http://www.opengis.net/def/uom/ogc/1.0/metre>
+  rdf:type skos:Concept ;
+  policy:status status:valid ;
+  owl:sameAs <http://www.opengis.net/def/uom/OGC/1.0/metre> ;
+.
+<http://www.opengis.net/def/uom/ogc/1.0/radian>
+  rdf:type skos:Concept ;
+  policy:status status:valid ;
+  owl:sameAs <http://www.opengis.net/def/uom/OGC/1.0/radian> ;
+.
+<http://www.opengis.net/def/uom/ogc/1.0/unity>
+  rdf:type skos:Concept ;
+  policy:status status:valid ;
+  owl:sameAs <http://www.opengis.net/def/uom/OGC/1.0/unity> ;
+.
+<http://www.opengis.net/def/uom/ucum/>
+  rdf:type skos:Collection ;
+.
+<http://www.opengis.net/def/uom/ucum/0/>
+  rdf:type skos:Collection ;
+.
+
+<http://www.opengis.net/def/uom/si/>
+  owl:sameAs <http://www.opengis.net/def/uom/SI/> ;
+.
+
+<http://www.opengis.net/def/uom/SI/>
+  rdf:type skos:Collection ;
+  rdfs:label "SI units of measure"^^xsd:string ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/> ;
+  owl:sameAs <http://www.opengis.net/def/uom/si/> ;
+  skos:member <http://www.opengis.net/def/uom/SI/ampere> ;
+  skos:member <http://www.opengis.net/def/uom/SI/candela> ;
+  skos:member <http://www.opengis.net/def/uom/SI/kelvin> ;
+  skos:member <http://www.opengis.net/def/uom/SI/kilogram> ;
+  skos:member <http://www.opengis.net/def/uom/SI/metre> ;
+  skos:member <http://www.opengis.net/def/uom/SI/mole> ;
+  skos:member <http://www.opengis.net/def/uom/SI/second> ;
+.
+<http://www.opengis.net/def/uom/SI/ampere>
+  rdf:type skos:Concept ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/si_brochure/chapter2/2-1/ampere.html> ;
+  skos:definition "The ampere is that constant current which, if maintained in two straight parallel conductors of infinite length, of negligible circular cross-section, and placed 1 m apart in vacuum, would produce between these conductors a force equal to 2 x 10–7 newton per metre of length."^^xsd:string ;
+  skos:exactMatch <http://qudt.org/vocab/unit#Ampere> ;
+  skos:notation "A"^^xsd:string ;
+.
+<http://www.opengis.net/def/uom/SI/candela>
+  rdf:type skos:Concept ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/si_brochure/chapter2/2-1/candela.html> ;
+  skos:definition "The candela is the luminous intensity, in a given direction, of a source that emits monochromatic radiation of frequency 540 x 1012 hertz and that has a radiant intensity in that direction of 1/683 watt per steradian."^^xsd:string ;
+  skos:exactMatch <http://qudt.org/vocab/unit#Candela> ;
+  skos:notation "cd"^^xsd:string ;
+.
+<http://www.opengis.net/def/uom/SI/kelvin>
+  rdf:type skos:Concept ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/si_brochure/chapter2/2-1/kelvin.html> ;
+  skos:definition "The kelvin, unit of thermodynamic temperature, is the fraction 1/273.16 of the thermodynamic temperature of the triple point of water."^^xsd:string ;
+  skos:exactMatch <http://qudt.org/vocab/unit#Kelvin> ;
+  skos:notation "K"^^xsd:string ;
+.
+<http://www.opengis.net/def/uom/SI/kilogram>
+  rdf:type skos:Concept ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/si_brochure/chapter2/2-1/kilogram.html> ;
+  skos:definition "The kilogram is the unit of mass; it is equal to the mass of the international prototype of the kilogram."^^xsd:string ;
+  skos:exactMatch <http://qudt.org/vocab/unit#Kilogram> ;
+  skos:notation "kg"^^xsd:string ;
+.
+<http://www.opengis.net/def/uom/SI/metre>
+  rdf:type skos:Concept ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/si_brochure/chapter2/2-1/metre.html> ;
+  skos:definition "The metre is the length of the path travelled by light in vacuum during a time interval of 1/299 792 458 of a second."^^xsd:string ;
+  skos:exactMatch <http://qudt.org/vocab/unit#Meter> ;
+  skos:notation "m"^^xsd:string ;
+.
+<http://www.opengis.net/def/uom/SI/mole>
+  rdf:type skos:Concept ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/si_brochure/chapter2/2-1/mole.html> ;
+  skos:definition """	1.	The mole is the amount of substance of a system which contains as many elementary entities as there are atoms in 0.012 kilogram of carbon 12.
+2.	When the mole is used, the elementary entities must be specified and may be atoms, molecules, ions, electrons, other particles, or specified groups of such particles."""^^xsd:string ;
+  skos:exactMatch <http://qudt.org/vocab/unit#Mole> ;
+  skos:notation "mol"^^xsd:string ;
+.
+<http://www.opengis.net/def/uom/SI/second>
+  rdf:type skos:Concept ;
+  rdfs:seeAlso <http://www.bipm.org/en/si/si_brochure/chapter2/2-1/second.html> ;
+  skos:definition "The second is the duration of 9 192 631 770 periods of the radiation corresponding to the transition between the two hyperfine levels of the ground state of the caesium 133 atom."^^xsd:string ;
+  skos:exactMatch <http://qudt.org/vocab/unit#Second> ;
+  skos:notation "s"^^xsd:string ;
+.
