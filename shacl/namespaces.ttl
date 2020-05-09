@@ -1,1 +1,3 @@
-prefix shacl: <https://www.w3.org/ns/shacl#>
+prefix sh: <https://www.w3.org/ns/shacl#>
+prefix shsh: <http://www.w3.org/ns/shacl-shacl#>
+
