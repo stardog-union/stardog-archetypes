@@ -1,0 +1,1512 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>BBC - Ontologies - BBC Ontology</title>
+    
+<!-- Environment: live -->
+<!-- Orbit: 3.0.0-864.6c60f7a7 -->
+<!-- Analytics Web Module: 0.0.2-448.45dcd56 -->
+<!-- NavID Web Module: 0.2.0-120.cd9b944 -->
+<!-- Detectview Web Module: 0.0.2-448.45dcd56 -->
+<!-- Searchbox Web Module: 3.0.0-89.8e9fe94 -->
+<!-- Promo Web Module: 3.0.0-117.74f66fe -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="fb:admins" content="100004154058350"><link rel="stylesheet" href="https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864/css/orb-ltr.min.css"><!--[if (lt IE 9) & (!IEMobile)]>
+    <link rel="stylesheet" href="https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864/css/orb-ie-ltr.min.css">
+    <![endif]--><script type="text/javascript">/*<![CDATA[*/
+        window.orb = {
+            lang: 'en',
+            bbcBaseUrl: 'https://www.bbc.co.uk',
+            bbcUrlPrefix: 'https://www.',
+            staticHost: 'https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864',
+            figUrl: 'https://fig.bbc.co.uk/frameworks/fig/2/fig.js',
+            partialCookieOvenUrl: 'https://cookie-oven.api.bbc'
+        };
+
+        document.documentElement.className += (document.documentElement.className? ' ' : '') + 'orb-js';
+        window.orb.worldwideNavlinks = '<li class="orb-nav-homedotcom"><a href="https://www.bbc.com/">Home</a></li><li class="orb-nav-newsdotcom"><a href="https://www.bbc.com/news">News</a></li><li class="orb-nav-sport"><a href="https://www.bbc.com/sport">Sport</a></li><li class="orb-nav-reeldotcom"><a href="https://www.bbc.com/reel">Reel</a></li><li class="orb-nav-worklife"><a href="https://www.bbc.com/worklife">Worklife</a></li><li class="orb-nav-traveldotcom"><a href="https://www.bbc.com/travel">Travel</a></li><li class="orb-nav-future"><a href="https://www.bbc.com/future">Future</a></li><li class="orb-nav-culture"><a href="https://www.bbc.com/culture">Culture</a></li><li class="orb-nav-music"><a href="https://www.bbc.com/culture/music">Music</a></li><li class="orb-nav-tv"><a href="https://www.bbc.co.uk/schedules/p00fzl9m">TV</a></li><li class="orb-nav-weather"><a href="https://www.bbc.com/weather">Weather</a></li><li class="orb-nav-sounds"><a href="https://www.bbc.co.uk/sounds">Sounds</a></li>';
+
+
+     /*]]>*/</script><script>// Promise polyfill from https://github.com/bramstein/promis
+        (function(){'use strict';var f,g=[];function l(a){g.push(a);1==g.length&&f()}function m(){for(;g.length;)g[0](),g.shift()}f=function(){setTimeout(m)};function n(a){this.a=p;this.b=void 0;this.f=[];var b=this;try{a(function(a){q(b,a)},function(a){r(b,a)})}catch(c){r(b,c)}}var p=2;function t(a){return new n(function(b,c){c(a)})}function u(a){return new n(function(b){b(a)})}function q(a,b){if(a.a==p){if(b==a)throw new TypeError;var c=!1;try{var d=b&&b.then;if(null!=b&&"object"==typeof b&&"function"==typeof d){d.call(b,function(b){c||q(a,b);c=!0},function(b){c||r(a,b);c=!0});return}}catch(e){c||r(a,e);return}a.a=0;a.b=b;v(a)}} function r(a,b){if(a.a==p){if(b==a)throw new TypeError;a.a=1;a.b=b;v(a)}}function v(a){l(function(){if(a.a!=p)for(;a.f.length;){var b=a.f.shift(),c=b[0],d=b[1],e=b[2],b=b[3];try{0==a.a?"function"==typeof c?e(c.call(void 0,a.b)):e(a.b):1==a.a&&("function"==typeof d?e(d.call(void 0,a.b)):b(a.b))}catch(h){b(h)}}})}n.prototype.g=function(a){return this.c(void 0,a)};n.prototype.c=function(a,b){var c=this;return new n(function(d,e){c.f.push([a,b,d,e]);v(c)})}; function w(a){return new n(function(b,c){function d(c){return function(d){h[c]=d;e+=1;e==a.length&&b(h)}}var e=0,h=[];0==a.length&&b(h);for(var k=0;k<a.length;k+=1)u(a[k]).c(d(k),c)})}function x(a){return new n(function(b,c){for(var d=0;d<a.length;d+=1)u(a[d]).c(b,c)})};window.Promise||(window.Promise=n,window.Promise.resolve=u,window.Promise.reject=t,window.Promise.race=x,window.Promise.all=w,window.Promise.prototype.then=n.prototype.c,window.Promise.prototype["catch"]=n.prototype.g);}());
+    
+    
+        // Polyfill Event constructor for IE ref: https://jira.dev.bbc.co.uk/browse/ORBITEN-919
+        // see: https://stackoverflow.com/questions/26596123
+        (function () {
+          if (typeof window.CustomEvent === "function") {
+            return false;
+          }
+          function CustomEvent(event, params) {
+            params = params || { bubbles: false, cancelable: false, detail: undefined };
+            var evt = document.createEvent('CustomEvent');
+            evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+            return evt;
+          }
+          CustomEvent.prototype = window.Event.prototype;
+          window.Event = CustomEvent;
+        })();
+    
+    
+        //Element.prototype.matches polyfill
+        //from https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill
+        if (!Element.prototype.matches) {
+          Element.prototype.matches = Element.prototype.msMatchesSelector ||
+                                      Element.prototype.webkitMatchesSelector;
+        }
+        //NodeList.forEach Polyfill
+        //from https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
+        if (window.NodeList && !NodeList.prototype.forEach) {
+          NodeList.prototype.forEach = Array.prototype.forEach;
+        }
+    
+        // Object.assign polyfill from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Polyfill
+        if (typeof Object.assign != 'function') {
+          // Must be writable: true, enumerable: false, configurable: true
+          Object.defineProperty(Object, "assign", {
+            value: function assign(target, varArgs) { // .length of function is 2
+              'use strict';
+              if (target == null) { // TypeError if undefined or null
+                throw new TypeError('Cannot convert undefined or null to object');
+              }
+    
+              var to = Object(target);
+    
+              for (var index = 1; index < arguments.length; index++) {
+                var nextSource = arguments[index];
+    
+                if (nextSource != null) { // Skip over if undefined or null
+                  for (var nextKey in nextSource) {
+                    // Avoid bugs when hasOwnProperty is shadowed
+                    if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                      to[nextKey] = nextSource[nextKey];
+                    }
+                  }
+                }
+              }
+              return to;
+            },
+            writable: true,
+            configurable: true
+          });
+        }
+    
+        // window.fetch polyfill https://github.com/github/fetch/blob/v0.11.0/fetch.js - chosen for IE9 compatibility
+        if(typeof window.fetch !== 'function') {
+          (function(self){"use strict";if(self.fetch){return}function normalizeName(name){if(typeof name!=="string"){name=String(name)}if(/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)){throw new TypeError("Invalid character in header field name")}return name.toLowerCase()}function normalizeValue(value){if(typeof value!=="string"){value=String(value)}return value}function Headers(headers){this.map={};if(headers instanceof Headers){headers.forEach(function(value,name){this.append(name,value)},this)}else if(headers){Object.getOwnPropertyNames(headers).forEach(function(name){this.append(name,headers[name])},this)}}Headers.prototype.append=function(name,value){name=normalizeName(name);value=normalizeValue(value);var list=this.map[name];if(!list){list=[];this.map[name]=list}list.push(value)};Headers.prototype["delete"]=function(name){delete this.map[normalizeName(name)]};Headers.prototype.get=function(name){var values=this.map[normalizeName(name)];return values?values[0]:null};Headers.prototype.getAll=function(name){return this.map[normalizeName(name)]||[]};Headers.prototype.has=function(name){return this.map.hasOwnProperty(normalizeName(name))};Headers.prototype.set=function(name,value){this.map[normalizeName(name)]=[normalizeValue(value)]};Headers.prototype.forEach=function(callback,thisArg){Object.getOwnPropertyNames(this.map).forEach(function(name){this.map[name].forEach(function(value){callback.call(thisArg,value,name,this)},this)},this)};function consumed(body){if(body.bodyUsed){return Promise.reject(new TypeError("Already read"))}body.bodyUsed=true}function fileReaderReady(reader){return new Promise(function(resolve,reject){reader.onload=function(){resolve(reader.result)};reader.onerror=function(){reject(reader.error)}})}function readBlobAsArrayBuffer(blob){var reader=new FileReader;reader.readAsArrayBuffer(blob);return fileReaderReady(reader)}function readBlobAsText(blob){var reader=new FileReader;reader.readAsText(blob);return fileReaderReady(reader)}var support={blob:"FileReader"in self&&"Blob"in self&&function(){try{new Blob;return true}catch(e){return false}}(),formData:"FormData"in self,arrayBuffer:"ArrayBuffer"in self};function Body(){this.bodyUsed=false;this._initBody=function(body){this._bodyInit=body;if(typeof body==="string"){this._bodyText=body}else if(support.blob&&Blob.prototype.isPrototypeOf(body)){this._bodyBlob=body}else if(support.formData&&FormData.prototype.isPrototypeOf(body)){this._bodyFormData=body}else if(!body){this._bodyText=""}else if(support.arrayBuffer&&ArrayBuffer.prototype.isPrototypeOf(body)){}else{throw new Error("unsupported BodyInit type")}if(!this.headers.get("content-type")){if(typeof body==="string"){this.headers.set("content-type","text/plain;charset=UTF-8")}else if(this._bodyBlob&&this._bodyBlob.type){this.headers.set("content-type",this._bodyBlob.type)}}};if(support.blob){this.blob=function(){var rejected=consumed(this);if(rejected){return rejected}if(this._bodyBlob){return Promise.resolve(this._bodyBlob)}else if(this._bodyFormData){throw new Error("could not read FormData body as blob")}else{return Promise.resolve(new Blob([this._bodyText]))}};this.arrayBuffer=function(){return this.blob().then(readBlobAsArrayBuffer)};this.text=function(){var rejected=consumed(this);if(rejected){return rejected}if(this._bodyBlob){return readBlobAsText(this._bodyBlob)}else if(this._bodyFormData){throw new Error("could not read FormData body as text")}else{return Promise.resolve(this._bodyText)}}}else{this.text=function(){var rejected=consumed(this);return rejected?rejected:Promise.resolve(this._bodyText)}}if(support.formData){this.formData=function(){return this.text().then(decode)}}this.json=function(){return this.text().then(JSON.parse)};return this}var methods=["DELETE","GET","HEAD","OPTIONS","POST","PUT"];function normalizeMethod(method){var upcased=method.toUpperCase();return methods.indexOf(upcased)>-1?upcased:method}function Request(input,options){options=options||{};var body=options.body;if(Request.prototype.isPrototypeOf(input)){if(input.bodyUsed){throw new TypeError("Already read")}this.url=input.url;this.credentials=input.credentials;if(!options.headers){this.headers=new Headers(input.headers)}this.method=input.method;this.mode=input.mode;if(!body){body=input._bodyInit;input.bodyUsed=true}}else{this.url=input}this.credentials=options.credentials||this.credentials||"omit";if(options.headers||!this.headers){this.headers=new Headers(options.headers)}this.method=normalizeMethod(options.method||this.method||"GET");this.mode=options.mode||this.mode||null;this.referrer=null;if((this.method==="GET"||this.method==="HEAD")&&body){throw new TypeError("Body not allowed for GET or HEAD requests")}this._initBody(body)}Request.prototype.clone=function(){return new Request(this)};function decode(body){var form=new FormData;body.trim().split("&").forEach(function(bytes){if(bytes){var split=bytes.split("=");var name=split.shift().replace(/\+/g," ");var value=split.join("=").replace(/\+/g," ");form.append(decodeURIComponent(name),decodeURIComponent(value))}});return form}function headers(xhr){var head=new Headers;var pairs=xhr.getAllResponseHeaders().trim().split("\n");pairs.forEach(function(header){var split=header.trim().split(":");var key=split.shift().trim();var value=split.join(":").trim();head.append(key,value)});return head}Body.call(Request.prototype);function Response(bodyInit,options){if(!options){options={}}this.type="default";this.status=options.status;this.ok=this.status>=200&&this.status<300;this.statusText=options.statusText;this.headers=options.headers instanceof Headers?options.headers:new Headers(options.headers);this.url=options.url||"";this._initBody(bodyInit)}Body.call(Response.prototype);Response.prototype.clone=function(){return new Response(this._bodyInit,{status:this.status,statusText:this.statusText,headers:new Headers(this.headers),url:this.url})};Response.error=function(){var response=new Response(null,{status:0,statusText:""});response.type="error";return response};var redirectStatuses=[301,302,303,307,308];Response.redirect=function(url,status){if(redirectStatuses.indexOf(status)===-1){throw new RangeError("Invalid status code")}return new Response(null,{status:status,headers:{location:url}})};self.Headers=Headers;self.Request=Request;self.Response=Response;self.fetch=function(input,init){return new Promise(function(resolve,reject){var request;if(Request.prototype.isPrototypeOf(input)&&!init){request=input}else{request=new Request(input,init)}var xhr=new XMLHttpRequest;function responseURL(){if("responseURL"in xhr){return xhr.responseURL}if(/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())){return xhr.getResponseHeader("X-Request-URL")}return}xhr.onload=function(){var status=xhr.status===1223?204:xhr.status;if(status<100||status>599){reject(new TypeError("Network request failed"));return}var options={status:status,statusText:xhr.statusText,headers:headers(xhr),url:responseURL()};var body="response"in xhr?xhr.response:xhr.responseText;resolve(new Response(body,options))};xhr.onerror=function(){reject(new TypeError("Network request failed"))};xhr.open(request.method,request.url,true);if(request.credentials==="include"){xhr.withCredentials=true}if("responseType"in xhr&&support.blob){xhr.responseType="blob"}request.headers.forEach(function(value,name){xhr.setRequestHeader(name,value)});xhr.send(typeof request._bodyInit==="undefined"?null:request._bodyInit)})};self.fetch.polyfill=true})(typeof self!=="undefined"?self:this);
+        }
+    
+        if (typeof window.CustomEvent !== 'function') {
+    
+          function CustomEvent(event, params) {
+            params = params || { bubbles: false, cancelable: false, detail: null };
+            var evt = document.createEvent('CustomEvent');
+            evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+            return evt;
+          }
+    
+          CustomEvent.prototype = window.Event.prototype;
+    
+          window.CustomEvent = CustomEvent;
+    
+        }
+    
+        (function() {
+    
+            var language = 'en';
+                language = 'en';
+    
+            var modal = false;
+    
+    
+            var istatsLabels = {name: 'corporate.ontologies.bbc.1_9' || undefined};
+    
+            function getMetaValue(propertyName) {
+              var metaTag = document.querySelector(
+                "meta[property='" + propertyName + "'], " +
+                "meta[name='" + propertyName + "']");
+              if (metaTag) {
+                return metaTag.getAttribute("content");
+              } else {
+                throw new Error('No meta tag called: ' + propertyName)
+              }
+            }
+    
+            function generateCountername() {
+                if (window.location.protocol === 'file:') {
+                  return 'local.file';
+                }
+    
+                var pathName = window.location.pathname
+                    .replace(/\/$/, "")
+                    .replace(/^\//, "")
+                    .replace(/\//g, '.');
+                return pathName + '.page';
+            }
+    
+            var additionalPageProperties = {};
+    
+            var page = {
+                name: '' || istatsLabels.name || generateCountername(),
+                destination: '' || null,
+                producer: '' || null,
+                section: '' || null,
+                site: '' || istatsLabels.bbc_site || istatsLabels.app_name || istatsLabels.prod_name || null,
+                contentId: '' || null,
+                contentType: '' || null,
+                edition: '' || null,
+                additionalProperties: additionalPageProperties
+            };
+    
+            function updatePageData(newData) {
+                page = Object.assign(page, newData);
+            }
+    
+            document.addEventListener('bbc-page-reset', function(event) {
+                if (event.detail && event.detail.page) {
+                    updatePageData(event.detail.page);
+                }
+                document.dispatchEvent(new Event('bbc-page-updated'));
+            });
+    
+            window.bbcpage = {
+                loadModule: function(deps) {
+                    return new Promise(function (resolve, reject) {
+                        window.require(deps, function () {
+                            resolve.apply(this, arguments);
+                        },
+                        function (error) {
+                            reject(error);
+                        });
+                    })
+                },
+                loadCSS: function (url, timeout) {
+                    return window.bbcpage.loadModule(['orb/lib/_$'])
+                        .then(function($) {
+                            return new Promise(function(resolve, reject) {
+                                var stylesheet = loadCSS(url);
+                                $.onloadCSS(stylesheet, function() {
+                                    resolve();
+                                });
+                                if (timeout) {
+                                    setTimeout(function () { reject(); }, timeout);
+                                }
+                            });
+                    });
+                },
+                isModal: function () {
+                    return modal;
+                },
+                getLanguage: function () {
+                    return new Promise(function(resolve, reject) {
+                        resolve(language);
+                    });
+                },
+                trackRegion: function (region, labels) {
+                    return window.bbcpage.loadModule(['istats-1'])
+                        .then(function(istats) {
+    
+                            var trackLabels = {
+                                region: region
+                            };
+    
+                            for (var label in labels) {
+                                trackLabels[label] = labels[label];
+                            }
+    
+                            var linkType = labels.linkType || 'internal';
+    
+                            istats.track(linkType, trackLabels);
+                        });
+                },
+                getName: function() {
+                    return Promise.resolve(page.name);
+                },
+                getDestination: function() {
+                    return Promise.resolve(page.destination);
+                },
+                getProducer: function() {
+                    return Promise.resolve(page.producer);
+                },
+                getSite: function() {
+                    return Promise.resolve(page.site);
+                },
+                getSection: function() {
+                    return Promise.resolve(page.section);
+                },
+                getContentType: function() {
+                    return Promise.resolve(page.contentType);
+                },
+                getContentId: function() {
+                    return Promise.resolve(page.contentId);
+                },
+                getEdition: function() {
+                  return new Promise(function (resolve, reject) {
+                    if (page.edition) {
+                      resolve(page.edition);
+                      return;
+                    }
+                    try {
+                      resolve(getMetaValue('x-audience').toLowerCase());
+                    } catch (err){
+                      // This property is related to Chartbeat; see http://support.chartbeat.com/docs/
+                      if (window._sf_async_config) {
+                        resolve(window._sf_async_config.region || null);
+                      }
+                    }
+                    resolve(null);
+                  });
+                },
+                getReferrer: function() {
+                  return Promise.resolve(window.orb && window.orb.referrer !== null && window.orb.referrer !== undefined ? window.orb.referrer : document.referrer);
+                },
+                getAdditionalProperties: function() {
+                  return Promise.resolve(page.additionalProperties);
+                }
+            };
+    
+            var USERINFO_URL = "";
+            var USERINFO_PREFIX = "www." || "www.";
+    
+            function initUserCache(orbitUser) {
+              var availableAttr = [
+                'X-Country',
+                'X-Ip_is_advertise_combined',
+                'X-Ip_is_uk_combined'
+              ];
+              var userCache = availableAttr.reduce(function(user, curr, i) {
+                if (!orbitUser[curr]) {
+                  return user;
+                }
+                var res = Object.assign({}, user);
+                res[curr] = orbitUser[curr];
+                return res;
+              }, {});
+              if (Object.keys(userCache).length !== availableAttr.length) {
+                userCache._partial = true;
+              }
+              return userCache;
+            }
+    
+            var user = initUserCache({
+            });
+    
+            function checkStatus(response) {
+              if (response.status >= 200 && response.status < 300) {
+                return response;
+              } else {
+                var error = new Error(response.statusText);
+                error.response = response;
+                throw error;
+              }
+            }
+    
+            function parseJSON(response) {
+              return response.json();
+            }
+    
+            var supportsCors = function() {
+              return typeof XMLHttpRequest !== 'undefined' &&
+                'withCredentials' in new XMLHttpRequest();
+            };
+    
+            var getUserInfoFallback = function() {
+              return window.bbcpage.loadModule(['orb/fig'])
+                .then(function(orbFig) {
+                  return new Promise(function(resolve, reject) {
+                    orbFig.load(function(fig) {
+                      var getCountryFallback = function() {
+                        if (fig.geo.isUK()) {
+                          return 'GB';
+                        } else if (fig.geo.isEU()) {
+                          return 'EU';
+                        }
+                      };
+                      resolve({
+                        'X-Country': user.country || getCountryFallback(),
+                        'X-Ip_is_uk_combined': fig().uk ? 'yes' : 'no',
+                        'X-Ip_is_advertise_combined': fig().ad ? 'yes' : 'no'
+                      });
+                    }, function () {
+                      reject('Error determining country. Timeout?');
+                    });
+                  });
+                });
+            };
+    
+            var _userInfoRequest;
+            var getUserInfo = function() {
+    
+              var host = window.location.host.toString().match(/bbc\.com$/) ? 'bbc.com' : 'bbc.co.uk';
+              var userInfoUrl = USERINFO_URL || window.location.protocol + "//" + USERINFO_PREFIX + host + '/userinfo';
+    
+              if (!user._partial) {
+                return Promise.resolve(user);
+              }
+    
+              if (!_userInfoRequest) {
+                if (typeof window.fetch === 'undefined' || !supportsCors()) {
+                  _userInfoRequest = getUserInfoFallback();
+                } else {
+                  _userInfoRequest = window.fetch(userInfoUrl, { credentials: 'same-origin' })
+                    .then(checkStatus)
+                    .then(parseJSON)
+                    .then(function(userInfo) {
+                      user = userInfo;
+                      return user;
+                    });
+                }
+              }
+    
+              return _userInfoRequest;
+            };
+    
+            window.bbcuser = {
+                getHashedId: function() {
+                    return window.bbcpage.loadModule(['idcta-v2/idcta-1'])
+                        .then(function(idcta) {
+                            return idcta.getCookieInstance().getHidFromCookie();
+                    });
+                },
+    
+                getCountry: function() {
+                    if (user['X-Country']) {
+                        return Promise.resolve(user['X-Country']);
+                    }
+                    return getUserInfo().then(function(userInfo) {
+                        return userInfo['X-Country'] || 'GB';
+                    });
+                },
+    
+                isUKCombined: function() {
+                    return getUserInfo().then(function(userInfo) {
+                        if (!userInfo['X-Ip_is_uk_combined']) {
+                            throw new Error('missing isUKCombined from userinfo response');
+                        }
+                        return userInfo['X-Ip_is_uk_combined'].toLowerCase() === 'yes';
+                    })
+                },
+    
+                canSeeAdverts: function() {
+                    return getUserInfo().then(function(userInfo) {
+                        if (!userInfo['X-Ip_is_advertise_combined']) {
+                            throw new Error('missing canSeeAdverts from userinfo response');
+                        }
+                        return userInfo['X-Ip_is_advertise_combined'].toLowerCase() === "yes";
+                    });
+                },
+    
+                isSignedIn: function() {
+                    return window.bbcpage.loadModule(['idcta-v2/idcta-1'])
+                        .then(function(idcta) {
+                            return (idcta && idcta.getCookieInstance().hasCookie());
+                        });
+                },
+                allowsPerformanceCookies: function() {
+                    return window.bbcpage.loadModule(['orb/cookies'])
+                            .then(function(bbccookies) {
+                                return !!bbccookies.cookiesEnabled() && !!bbccookies.readPolicy('performance');
+                            });
+                },
+                allowsFunctionalCookies: function() {
+                    return window.bbcpage.loadModule(['orb/cookies'])
+                            .then(function(bbccookies) {
+                                return !!bbccookies.cookiesEnabled() && !!bbccookies.readPolicy('personalisation');
+                            });
+                },
+                getCookieValue: function(cookieName) {
+                    return window.bbcpage.loadModule(['orb/cookies'])
+                            .then(function(bbccookies) {
+                                return bbccookies.get(cookieName);
+                            });
+                },
+                resetCookiesPreferences: function() {
+                    return window.bbcpage.loadModule(['orb/cookies'])
+                            .then(function(bbccookies) {
+                                bbccookies.setDefaultCookiesSingleDomain();
+                            });
+                },
+                hasCookiesEnabled: function() {
+                    return window.bbcpage.loadModule(['orb/cookies'])
+                            .then(function(bbccookies) {
+                                return !!bbccookies.cookiesEnabled();
+                            });
+                },
+                hasSeenCookieBanner: function() {
+                    return window.bbcpage.loadModule(['orb/cookies'])
+                            .then(function (bbccookies) {
+                                return !!bbccookies.isCookiePolicySet();
+                            });
+                },
+                logEvent: function (verb, noun, extraLabels) {
+                    return window.bbcuser.hasCookiesEnabled()
+                        .then(function(allowsCookies) {
+                            if (allowsCookies) {
+                                return window.bbcpage.loadModule(['istats-1'])
+                                    .then(function(istats) {
+                                        istats.log(verb, noun, extraLabels);
+                                    });
+                            } else {
+                                throw new Error('User cannot be tracked due to cookies preferences.');
+                            }
+                        });
+                },
+            };
+    
+        }());</script><script src="https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864/js/require.min.js"></script> <script src="https://nav.files.bbci.co.uk/orbit-webmodules/0.0.2-448.45dcd56/cookie-banner/cookie-library.min.js"></script><script type="text/javascript">if (window.define !==  undefined) {
+        define('orb/cookies', function() {
+          return window.bbccookies;
+        });
+      }</script>   <script src="https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864/js/api.min.js"></script><script type="text/javascript">window.bbcFlagpoles_istats="ON",require.config({paths:{"istats-1":"https://nav.files.bbci.co.uk/orbit-webmodules/0.0.2-448.45dcd56/istats/istats-1"}}),require(["istats-1","orb/cookies"],function(t,a){if(a.isAllowed("s1")){var e=(o=document.location.href.match(/^(?:https|http):\/\/\w*\.(?:(int|test|stage|live|)\.)?bbc\.(?:co\.uk|com)/))?void 0===o[1]||""===o[1]||"live"===o[1]?"//sa.bbc.co.uk/bbc/bbc/s":"//sa.bbc.co.uk/bbc/"+o[1]+"/s":"//sa.bbc.co.uk/bbc/test/s";t.addCollector({name:"default",url:e,separator:"&"});var s="corporate.ontologies.bbc.1_9";t.setCountername(s),window.istats_countername&&t.setCountername(window.istats_countername),t.addLabels("ml_name=webmodule&ml_version=0.0.2-448.45dcd56&blq_e=orbit&blq_r=orbit&blq_s=orbit&blq_v=default&language=en")}var o});</script><link rel="stylesheet" href="https://static.files.bbci.co.uk/account/id-cta/1.42.0/style/id-cta.css"><!--[if IE 8]><link href="https://static.files.bbci.co.uk/account/id-cta/1.42.0/style/ie8.css" rel="stylesheet"/> <![endif]--><script type="text/javascript">(function() {if (!window.require) {throw new Error('idcta: could not find require module');}if (typeof(map) == 'undefined') {var map = {};}if (!!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) {document.documentElement.className += ' id-svg';}var ptrt = new RegExp("[\\?&]ptrt=([^&]*)").exec(document.location.href);var ENDPOINT_URL = 'https://idcta.api.bbc.co.uk';var ENDPOINT_CONFIG = ('/idcta/config?callback=&ptrt=' + encodeURIComponent((ptrt ? ptrt[1] : document.location.href))).replace(/\&amp;/g, '&');var ENDPOINT_TRANSLATIONS = '/idcta/translations?callback=';function hasPromise() {var P = window.Promise;var promiseToString = null;if (P) {try {promiseToString = Object.prototype.toString.call(P.resolve());} catch(e) {/*silently ignored*/}}return (promiseToString === '[object Promise]' && !P.cast);}if (hasPromise()) {define('idcta/es6-promise', function() {return window.Promise;});define('idcta-v2/es6-promise', function() {return window.Promise;});}map['idcta-v2'] = 'https://static.files.bbci.co.uk/account/id-cta/1.42.0/modules/idcta-v2';map['idcta-v2/config'] = ENDPOINT_URL + ENDPOINT_CONFIG;map['idcta-v2/translations'] = ENDPOINT_URL + ENDPOINT_TRANSLATIONS;map['idcta'] = 'https://static.files.bbci.co.uk/account/id-cta/1.8.2/modules/idcta';map['idcta-v2/idcta-1'] = 'https://static.files.bbci.co.uk/account/id-cta/1.42.0/modules/idcta-v2/dist/idcta-1.min';map['idcta-v2/experiment-snippet'] = 'https://cdn.optimizely.com/public/4621041136/s/idcta_live';const idctaShim = {deps: ['idcta-v2/idcta-1'],};require({shim: {'idcta-v2/statusbar': idctaShim,'idcta-v2/id-config': idctaShim},map: {'*': {'idcta/idcta-1': 'idcta-v2/idcta-1','idcta': 'idcta-v2',}},paths: map});window.idctaBaseUrl = ENDPOINT_URL;define('idcta/config', ['idcta-v2/config'], function(data) {return data;});define('idcta/translations', ['idcta-v2/translations'], function(data) {return data;});})();</script> <!-- BBCDOTCOM head --><script type="text/javascript">/*<![CDATA[*/ var _sf_startpt = (new Date()).getTime(); /*]]>*/</script><style type="text/css">.bbccom_display_none{display:none;}</style><script type="text/javascript">/*<![CDATA[*/ var bbcdotcomConfig, googletag = googletag || {}; googletag.cmd = googletag.cmd || [], bbcdotcomScripts = [], tp = window.tp || []; var bbcdotcom = false; (function(){ if(typeof require !== 'undefined') { require({ paths:{ "bbcdotcom":"https://static.bbc.co.uk/bbcdotcom/4.1.0/script" } }); } })(); /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ var bbcdotcom = { adverts: { keyValues: { set: function() {} } }, advert: { write: function () {}, show: function () {}, isActive: function () { return false; }, layout: function() { return { reset: function() {} } } }, config: { init: function() {}, isActive: function() {}, setSections: function() {}, isAdsEnabled: function() {}, setAdsEnabled: function() {}, isAnalyticsEnabled: function() {}, setAnalyticsEnabled: function() {}, setAssetPrefix: function() {}, setFlagpoles: function() {}, setVersion: function () {}, setJsPrefix: function() {}, setSwfPrefix: function() {}, setCssPrefix: function() {}, setConfig: function() {}, getAssetPrefix: function() {}, getJsPrefix: function () {}, getSwfPrefix: function () {}, getCssPrefix: function () {}, isOptimizelyEnabled: function() {}, isThirdPartyDisabled: function() {}, isThirdPartyDisabledEU: function() {}, setEU: function() {} }, survey: { init: function(){ return false; } }, data: {}, init: function() {}, objects: function(str) { return false; }, locale: { set: function() {}, get: function() {} }, setAdKeyValue: function() {}, utils: { addEvent: function() {}, addHtmlTagClass: function() {}, log: function () {} }, addLoadEvent: function() {} }; /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ (function(){ if (typeof orb !== 'undefined' && typeof orb.fig === 'function') { if (orb.fig('ad') && orb.fig('uk') == 0) { bbcdotcom.data = { ads: (orb.fig('ad') ? 1 : 0), stats: (orb.fig('uk') == 0 ? 1 : 0), statsProvider: orb.fig('ap') }; } } else { document.write('<script type="text/javascript" src="https://www.bbc.com/wwscripts/data">\x3C/script>'); } })(); /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ (function(){ if (typeof orb === 'undefined' || typeof orb.fig !== 'function') { bbcdotcom.data = { ads: bbcdotcom.data.a, stats: bbcdotcom.data.b, statsProvider: bbcdotcom.data.c }; } if (bbcdotcom.data.ads == 1) { document.write('<script type="text/javascript" src="https://www.bbc.com/wwscripts/flag">\x3C/script>'); } })(); /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ (function(){ if (window.bbcdotcom && (typeof bbcdotcom.flag == 'undefined' || (typeof bbcdotcom.data.ads !== 'undefined' && bbcdotcom.flag.a != 1))) { bbcdotcom.data.ads = 0; } if (/[?|&]ads/.test(window.location.href) || /(^|; )ads=on; /.test(document.cookie) || /; ads=on(; |$)/.test(document.cookie)) { bbcdotcom.data.ads = 1; bbcdotcom.data.stats = 1; } if (window.bbcdotcom && (bbcdotcom.data.ads == 1 || bbcdotcom.data.stats == 1)) { bbcdotcom.assetPrefix = "https://static.bbc.co.uk/bbcdotcom/4.1.0/"; if (/(sandbox|int)(.dev)*.bbc.co*/.test(window.location.href) || /[?|&]ads-debug/.test(window.location.href) || document.cookie.indexOf('ads-debug=') !== -1) { document.write('<script type="text/javascript" src="https://static.bbc.co.uk/bbcdotcom/4.1.0/script/dist/bbcdotcom.dev.js">\x3C/script>'); } else { document.write('<script type="text/javascript" src="https://static.bbc.co.uk/bbcdotcom/4.1.0/script/dist/bbcdotcom.js">\x3C/script>'); } } })(); /*]]>*/</script><script type="text/javascript">if (window.bbcdotcom && bbcdotcom.data.stats == 1) { document.write('<link rel="dns-prefetch" href="//secure-us.imrworldwide.com/">'); document.write('<link rel="dns-prefetch" href="//me-cdn.effectivemeasure.net/">'); document.write('<link rel="dns-prefetch" href="//ssc.api.bbc.com/">'); } if (window.bbcdotcom && bbcdotcom.data.ads == 1) { document.write('<link rel="dns-prefetch" href="//www.googletagservices.com/">'); document.write('<link rel="dns-prefetch" href="//bbc.gscontxt.net/">'); document.write('<link rel="dns-prefetch" href="//tags.crwdcntrl.net/">'); document.write('<link rel="dns-prefetch" href="//ad.crwdcntrl.net/">'); }</script><script type="text/javascript">if (window.bbcdotcom && bbcdotcom.data.ads == 1) { document.write('<meta name="google-site-verification" content="auTeTTwSt_KBY_4iDoR00Lwb7-qzx1IgzJy6ztaWgEI" />'); }</script><script type="text/javascript">/*<![CDATA[*/ (function(){ var GDPR_COUNTRIES = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'CH']; if (window.bbcdotcom && (bbcdotcom.data.ads == 1 || bbcdotcom.data.stats == 1)) { bbcdotcomConfig = {"adFormat":"standard","adKeyword":"","adMode":"smart","adsEnabled":true,"appAnalyticsSections":"","asyncEnabled":true,"disableInitialLoad":false,"advertInfoPageUrl":"https:\/\/www.bbc.com\/privacy\/cookies\/international\/","advertisementText":"Advertisement","analyticsEnabled":true,"thirdPartyDisabled":false,"sherlockEnabled":false,"appName":"","assetPrefix":"https:\/\/static.bbc.co.uk\/bbcdotcom\/4.1.0\/","customAdParams":[],"customStatsParams":[],"headline":"","id":"","inAssociationWithText":"in association with","keywords":"","language":"","orbTransitional":false,"optimizelyEnabled":true,"palEnv":"live","productName":"","sections":[],"comScoreEnabled":true,"comscoreSite":"bbc","comscoreID":"19293874","comscorePageName":"","slots":"","sponsoredByText":"is sponsored by","adsByGoogleText":"Ads by Google","summary":"","type":"","features":{"testfeature":{"name":"testfeature","envs":["sandbox","int","test"],"on":true,"options":{},"override":null},"lxadverts":{"name":"lxadverts","envs":[],"on":true,"options":{},"override":null}},"staticBase":"\/bbcdotcom","staticHost":"https:\/\/static.bbc.co.uk","staticVersion":"4.1.0","staticPrefix":"https:\/\/static.bbc.co.uk\/bbcdotcom\/4.1.0","dataHttp":"tps.bbc.com","dataHttps":"www.bbc.com","flagHttp":"www.bbc.co.uk","flagHttps":"www.bbc.co.uk","analyticsHttp":"sa.bbc.com","analyticsHttps":"ssa.bbc.com"}; bbcdotcom.config.init(bbcdotcomConfig, bbcdotcom.data, window.location, window.document); bbcdotcom.config.setFlagpoles(bbcdotcom.flag || {}); bbcdotcom.config.setAssetPrefix("https://static.bbc.co.uk/bbcdotcom/4.1.0/"); bbcdotcom.config.setVersion("4.1.0"); if (window.bbcuser && window.bbcuser.getCountry && typeof(window.bbcuser.getCountry) === 'function') { window.bbcuser.getCountry().then(function(countryCode) { var isEU = countryCode ? GDPR_COUNTRIES.indexOf(countryCode.toUpperCase()) !== -1 : false; bbcdotcom.config.setEU(isEU); }); } else if (window.orb && window.orb.fig && typeof(window.orb.fig) === 'function') { bbcdotcom.config.setEU(window.orb.fig('eu')); } document.write('<!--[if IE 7]><script type="text/javascript">bbcdotcom.config.setIE7(true);\x3C/script><![endif]-->'); document.write('<!--[if IE 8]><script type="text/javascript">bbcdotcom.config.setIE8(true);\x3C/script><![endif]-->'); document.write('<!--[if IE 9]><script type="text/javascript">bbcdotcom.config.setIE9(true);\x3C/script><![endif]-->'); if (/[?|&]ex-dp/.test(window.location.href) || document.cookie.indexOf('ex-dp=') !== -1) { bbcdotcom.utils.addHtmlTagClass('bbcdotcom-ex-dp'); } } })(); /*]]>*/</script><script type="text/javascript">var initOptimizely = (function(isEnabled){ if(!isEnabled) return; var logger = window.bbcdotcom.Logger('bbcdotcom:head:optimizely'); /* Allow Optimizely in these paths */ var allowPaths = ['/', '/wwhp']; /* Only run on optimizely on homepage */ if (bbcdotcom.utils && allowPaths.indexOf(window.location.pathname) !== -1){ /* set correct OptimizelyURL for prod or sandbox */ var optimizelyURL = "https://cdn.optimizely.com/public/4621041136/s/bbccom_sandbox.js"; if(window.location.hostname === 'www.bbc.com') { optimizelyURL = "https://cdn.optimizely.com/public/4621041136/s/bbccom_prod.js"; } /* Set cookie to 1 year */ window['optimizely'] = window['optimizely'] || []; window['optimizely'].push({ "type": "cookieExpiration", "cookieExpirationDays": 365 }); document.write('<script type="text/javascript" src="'+optimizelyURL+'">\x3C/script>'); } })( bbcdotcom.config.isOptimizelyEnabled() );</script><script type="text/javascript">/*<![CDATA[*/ if ( window.bbcdotcom && bbcdotcom.data && bbcdotcom.data.ads && bbcdotcom.data.ads == 1 && bbcdotcom.config && bbcdotcom.config.isGrapeshotEnabled && bbcdotcom.config.isGrapeshotEnabled() && bbcdotcom.config.isWorldService && !bbcdotcom.config.isWorldService() ) { var gs_channels="DEFAULT"; (function () { var gsurl = window.location.href.split("?")[0]; bbcdotcomScripts.push({src:'https://bbc.gscontxt.net/?url='+encodeURIComponent(gsurl)}); })(); } /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ if (window.bbcdotcom && bbcdotcom.config && bbcdotcom.config.isLotameActive && bbcdotcom.config.isLotameActive()&& bbcdotcom.config.isLotameEnabled && bbcdotcom.config.isLotameEnabled()){ (function () { var clientId, lotameUrl, lotameAudienceUrl; clientId = (bbcdotcom.config.isWorldService && bbcdotcom.config.isWorldService()) ? '10826' : '10816'; lotameUrl = 'https://tags.crwdcntrl.net/c/'+clientId+'/cc.js?ns='+clientId; lotameAudienceUrl = 'https://ad.crwdcntrl.net/5/c=10815/pe=y/var=ccauds'; bbcdotcomScripts.push({src:lotameUrl,id:"LOTCC"+clientId}); bbcdotcomScripts.push({src:lotameAudienceUrl}); })(); } /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ /** * ASYNC waits to make any gpt requests until the bottom of the page */ if ( window.bbcdotcom && bbcdotcom.data && bbcdotcom.data.ads && bbcdotcom.data.ads == 1 && bbcdotcom.config && bbcdotcom.config.isAsync && bbcdotcom.config.isAsync() && bbcdotcom.config.isAdsEnabled && bbcdotcom.config.isAdsEnabled() ) { (function () { bbcdotcomScripts.push({src:'https://securepubads.g.doubleclick.net/tag/js/gpt.js'}); })(); } /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ /* Load Lotame, Grapeshot and GPT without blocking rendering but executing in order */ if ( window.bbcdotcom && bbcdotcom.config && bbcdotcomScripts.length > 0 ) { (function () { bbcdotcom.checkThirdPartyFirst(function(){ if (!bbcdotcom.config.isThirdPartyDisabledEU()){ bbcdotcomScripts.forEach(function(item) { var script = document.createElement('script'); script.async = false; if(item.id) script.id = item.id; script.src = item.src; document.head.appendChild(script); }); } }); })(); } /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ (function() { window.bbcdotcom.head = true; }()); /*]]>*/</script><script type="text/javascript">// Globally available search context
+  window.SEARCHBOX={"variant":"default","locale":"en","feature":"","navSearchboxStaticPrefix":"https://nav.files.bbci.co.uk/searchbox/4761e79022dff0437ec5979b0728630b/","searchboxAppStaticPrefix":"https://nav.files.bbci.co.uk/searchbox/4761e79022dff0437ec5979b0728630b/drawer","searchFormHtml":"<div tabindex=\"-1\" data-reactroot=\"\"><div><section class=\"se-searchbox-panel\"><div class=\"se-g-wrap\"><div class=\"se-g-layout\"><div class=\"se-g-layout__item se-searchbox-title\" aria-hidden=\"true\">search</div><div class=\"se-g-layout__item se-searchbox\"><form accept-charset=\"utf-8\" id=\"searchboxDrawerForm\" method=\"get\" action=\"https://search.bbc.co.uk/search\"><label class=\"se-searchbox__input\" for=\"se-searchbox-input-field\"><span class=\"se-sr-only\">Search Term</span><input type=\"text\" name=\"q\" value=\"\" id=\"se-searchbox-input-field\" class=\"se-searchbox__input__field\" maxLength=\"512\" autoComplete=\"off\" autoCorrect=\"off\" autoCapitalize=\"off\" spellcheck=\"false\" tabindex=\"0\"/></label><input type=\"hidden\" name=\"scope\" value=\"\"/><button type=\"submit\" class=\"se-searchbox__submit\" tabindex=\"0\" data-bbc-container=\"se-searchbox-panel\" data-bbc-title=\"search-icon\" data-bbc-metadata=\"{&quot;PAR&quot;:&quot;form::1&quot;,&quot;CHD&quot;:&quot;button::1&quot;}\">Search</button><button type=\"button\" class=\"se-searchbox__clear se-searchbox__clear--visible\" tabindex=\"0\" data-bbc-container=\"se-searchbox-panel\" data-bbc-title=\"clear-icon\" data-bbc-metadata=\"{&quot;PAR&quot;:&quot;form::1&quot;,&quot;CHD&quot;:&quot;button::2&quot;}\">Close</button></form></div></div></div></section><div aria-live=\"polite\" aria-atomic=\"true\" class=\"se-suggestions-container\"><section class=\"se-g-wrap\"></section></div></div></div>","searchScopePlaceholder":"","searchScopeParam":"","searchScopeTemplate":"","searchPlaceholderWrapperStart":"","searchPlaceholderWrapperEnd":""};
+  window.SEARCHBOX.suppress = false;
+  window.SEARCHBOX.searchScope = SEARCHBOX.searchScopeTemplate.split('-')[0];</script><link rel="stylesheet" href="https://nav.files.bbci.co.uk/searchbox/4761e79022dff0437ec5979b0728630b/css/main.css"><!--[if IE 8]>
+  <script type="text/javascript" src="https://nav.files.bbci.co.uk/searchbox/4761e79022dff0437ec5979b0728630b/script/html5shiv.min.js"></script>
+  <script type="text/javascript">window['searchboxIEVersion'] = 8;</script>
+  <link rel="stylesheet" href="https://nav.files.bbci.co.uk/searchbox/4761e79022dff0437ec5979b0728630b/css/ie8.css">
+<![endif]--><!--[if IE 9]>
+  <script type="text/javascript">window['searchboxIEVersion'] = 9;</script>
+<![endif]--><script type="text/javascript">require.config({
+        "paths": {
+            "orb/async/_footerpromo": 'https://nav.files.bbci.co.uk/navpromo/1a758b67be1b457163af81ff41c92946/js/async/_footerpromo'
+        }
+    });</script> <script type="text/javascript">"use strict";!function(){window.__reverbStaticLocation="https://mybbc-analytics.files.bbci.co.uk/reverb-client-js/",window.__smarttagVersion="5.18.2",window.__reverb={},window.__reverb.__reverbLoadedPromise=new Promise(function(e,n){window.__reverb.__resolveReverbLoaded=e,window.__reverb.__rejectReverbLoaded=n}),window.__reverb.__reverbTimeout=setTimeout(function(){window.__reverb.__rejectReverbLoaded()},5e3);var n=function(r,d){window.__reverb.__reverbLoadedPromise.then(function(e){if(r&&r.detail){var n=r.detail.label,t=r.detail.type,i=r.detail.elem,o=r.detail.originalEvent;r.detail.isClick&&(d=r.detail.isClick),e.userActionEvent(t,n,r.detail,i,o,d)}},function(){console.log("Reverb failed to load. Event not sent")})};document.addEventListener("bbc-user-event",function(e){n(e,!1)}),document.addEventListener("bbc-user-click",function(e){n(e,!0)}),document.addEventListener("bbc-page-updated",function(){window.__reverb.__reverbLoadedPromise.then(function(e){e.initialise().then(function(){return e.viewEvent()})},function(){console.log("Reverb failed to load. Event not sent")})})}();</script><script type="text/javascript" src="https://mybbc-analytics.files.bbci.co.uk/reverb-client-js/reverb-1.4.0.js" async=""></script>
+    <link rel="stylesheet" media="screen" href="/ontologies/assets/stylesheets/grid.css" />
+    <link rel="stylesheet" media="screen" href="/ontologies/assets/stylesheets/main.css" />
+    <link rel="stylesheet" media="screen" href="/ontologies/assets/stylesheets/gridism.css" />
+
+    
+        <link rel="alternate" type="text/turtle" href="/ontologies/bbc/1.9.ttl" />
+    
+
+    <link rel="icon" href="http://www.bbc.co.uk/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body class="ontologies">
+    <noscript><p style="position: absolute; top: -999em"><img src="https://a1.api.bbc.co.uk/hit.xiti?&col=1&from=p&ptag=js&s=598253&p=unknown&x2=[responsive]&x3=[bbc_website]&x4=[en]&x8=[reverb-1.4.0-nojs]&x11=[]&x12=[]" height="1" width="1" alt=""></p></noscript>  <!-- BBCDOTCOM bodyFirst --><div id="bbccom_interstitial_ad" class="bbccom_display_none"></div><div id="bbccom_interstitial" class="bbccom_display_none"><script type="text/javascript">/*<![CDATA[*/ (function() { if (window.bbcdotcom && bbcdotcom.config.isAdsEnabled()) { googletag.cmd.push(function() { googletag.display('bbccom_interstitial'); }); } }()); /*]]>*/</script></div><div id="bbccom_wallpaper_ad" class="bbccom_display_none"></div><div id="bbccom_wallpaper" class="bbccom_display_none"><script type="text/javascript">/*<![CDATA[*/ (function() { var wallpaper; if (window.bbcdotcom && bbcdotcom.config.isAdsEnabled()) { if (bbcdotcom.config.isAsync()) { googletag.cmd.push(function() { googletag.display('bbccom_wallpaper'); }); } else if (typeof googletag !== "undefined" && typeof googletag.display === "function") { googletag.display("wallpaper"); } wallpaper = bbcdotcom.adverts.adRegister.getAd('wallpaper'); } }()); /*]]>*/</script></div><script type="text/javascript">/*<![CDATA[*/ (function() { if (window.bbcdotcom && bbcdotcom.config.isAdsEnabled()) { document.write(unescape('%3Cscript id="gnlAdsEnabled" class="bbccom_display_none"%3E%3C/script%3E')); } if (window.bbcdotcom && bbcdotcom.config.isAnalyticsEnabled()) { document.write(unescape('%3Cscript id="gnlAnalyticsEnabled" class="bbccom_display_none"%3E%3C/script%3E')); } }()); /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ (function() { window.bbcdotcom.bodyFirst = true; }()); /*]]>*/</script> <div id="cookiePrompt"></div> <!--[if (gt IE 8) | (IEMobile)]><!--><header id="orb-banner" role="banner" aria-label="BBC"><!--<![endif]--><!--[if (lt IE 9) & (!IEMobile)]>
+            <![if (IE 8)]>
+                <header id="orb-banner" role="banner" class="orb-old-ie orb-ie8" aria-label="BBC">
+            <![endif]>
+
+            <![if (IE 7)]>
+                <header id="orb-banner" role="banner" class="orb-old-ie orb-ie7" aria-label="BBC">
+            <![endif]>
+
+            <![if (IE 6)]>
+                <header id="orb-banner" role="banner" class="orb-old-ie orb-ie6" aria-label="BBC">
+            <![endif]>
+        <![endif]--><div id="orb-header" class="orb-nav-pri orb-nav-pri-white orb-nav-empty" dir="ltr"><div class="orb-nav-pri-container b-r b-g-p"><div class="orb-nav-section orb-nav-blocks"><a href="https://www.bbc.co.uk">Homepage</a></div><section><div class="orb-skip-links"><h2>Accessibility links</h2><ul><li><a href="#orb-modules">Skip to content</a></li><li><a id="orb-accessibility-help" href="https://www.bbc.co.uk/accessibility/">Accessibility Help</a></li></ul></div></section><div id="mybbc-wrapper" class="orb-nav-section orb-nav-id orb-nav-focus orb-nav-id-default"><div id="idcta-statusbar" class="orb-nav-section orb-nav-focus" data-bbc-container="id-cta" data-bbc-event-type="click" data-bbc-ignore-views="1" data-bbc-metadata="{&quot;id-cta-type&quot;: &quot;statusbar-orb&quot;}" data-bbc-source="responsive_web" data-bbc-title="id-cta-sign-in"><a id="idcta-link" href="https://account.bbc.com/account"><span id="idcta-username">BBC Account</span></a></div><script type="text/javascript">require(['idcta/statusbar'], function (statusbar) {new statusbar.Statusbar({id: 'idcta-statusbar', publiclyCacheable: true});});</script><!-- Because we are now loading the notification bell CSS asynchronously, we need this inline style hack to ensure that the notification div 
+		 is hidden by default, and shown only if and when the bell code is loaded from notification-ui --><a id="notification-link" class="js-notification-link animated three" href="#" style="display: none"><span class="hidden-span">Notifications</span><div class="notification-link--triangle"></div><div class="notification-link--triangle"></div><span id="not-num"></span></a></div><nav role="navigation" aria-label="BBC" class="orb-nav"><div class="orb-nav-section orb-nav-links orb-nav-focus" id="orb-nav-links"><ul><li class="orb-nav-home"><a href="https://www.bbc.co.uk">Home</a></li><li class="orb-nav-news"><a href="https://www.bbc.co.uk/news">News</a></li><li class="orb-nav-sport"><a href="https://www.bbc.co.uk/sport">Sport</a></li><li class="orb-nav-weather"><a href="https://www.bbc.co.uk/weather">Weather</a></li><li class="orb-nav-iplayer"><a href="https://www.bbc.co.uk/iplayer">iPlayer</a></li><li class="orb-nav-sounds"><a href="https://www.bbc.co.uk/sounds">Sounds</a></li><li class="orb-nav-cbbc"><a href="https://www.bbc.co.uk/cbbc">CBBC</a></li><li class="orb-nav-cbeebies"><a href="https://www.bbc.co.uk/cbeebies">CBeebies</a></li><li class="orb-nav-food"><a href="https://www.bbc.co.uk/food">Food</a></li><li class="orb-nav-bitesize"><a href="https://www.bbc.co.uk/bitesize">Bitesize</a></li><li class="orb-nav-arts"><a href="https://www.bbc.co.uk/arts">Arts</a></li><li class="orb-nav-taster"><a href="https://www.bbc.co.uk/taster">Taster</a></li><li class="orb-nav-local"><a href="https://www.bbc.co.uk/news/localnews">Local</a></li><li class="orb-nav-three"><a href="https://www.bbc.co.uk/bbcthree">Three</a></li><li id="orb-nav-more" style="width: 88px" aria-controls="orb-panel-more"><a href="#orb-footer" data-alt="More" class="istats-notrack">Menu<span class="orb-icon orb-icon-arrow"></span></a></li></ul></div></nav><div class="orb-nav-section orb-nav-search"><a class="orb-search__button" href="https://search.bbc.co.uk/search" title="Search the BBC">Search</a><form class="b-f" id="orb-search-form" role="search" method="get" action="https://search.bbc.co.uk/search" accept-charset="utf-8"><div><label for="orb-search-q">Search the BBC</label><input id="orb-search-q" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="q" placeholder="Search"><button id="orb-search-button" class="orb-search__button">Search the BBC</button><input type="hidden" name="suggid" id="orb-search-suggid"></div></form></div></div><div id="orb-panels"></div></div></header>  <!-- Styling hook for shared modules only -->
+<div id="orb-modules">
+    
+    <div id="content">
+        <div id="header">
+            <div class="container">
+                <div class="container-inner">
+                    <h2><a class="index-title" href="/ontologies">Ontologies</a></h2>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div class="container">
+                <div class="container-inner">
+                    
+    <h1 class="ontology-label">BBC Ontology</h1>
+
+
+    <div class="grid no-gutters">
+        <div class="unit whole">
+
+            <div class="ontology-metadata">
+                
+                    <p class="description">The BBC ontology is used to describe BBC concepts in the store. For example, the BBC divisions (products) publishing linked data and interfacing with the triplestore, the platforms for which we produce content and the web documents that publish or are relevant to the BBC&#x27;s content.</p>
+                
+
+                <div class="table table-metadata">
+                    
+                    <div class="grid row authors">
+                        <div class="label unit one-fifth">Authors</div>
+                        <div class="value unit four-fifths">mailto:LinkedData@bbc.co.uk</div>
+                    </div>
+                    
+                    
+                    
+                        <div class="grid row created-date">
+                            <div class="label unit one-fifth">Created Date</div>
+                            <div class="value unit four-fifths">2012-12-01</div>
+                        </div>
+                    
+                    
+                        <div class="grid row version">
+                            <div class="label unit one-fifth">Version</div>
+                            <div class="value unit four-fifths">1.9</div>
+                        </div>
+                    
+                    
+                        <div class="grid row priorVersion">
+                            <div class="label unit one-fifth">Prior Version</div>
+                            <div class="value unit four-fifths">
+                                <a href='/ontologies/bbc/1.8'>
+                                    1.8
+                                </a>
+                            </div>
+                        </div>
+                    
+                    
+                        <div class="grid row licence">
+                            <div class="label unit one-fifth">Licence</div>
+                            <div class="value unit four-fifths"><a href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></div>
+                        </div>
+                    
+                    <div class="grid row download">
+                        <div class="label unit one-fifth">Download</div>
+                        <div class="value unit four-fifths">
+                            <a href="/ontologies/bbc/1.9.ttl">RDF</a>
+                        </div>
+                    </div>
+                </table>
+            </div>
+
+            
+
+            <h2>Ontology Terms</h2>
+            <p>Automatically generated documentation for the ontology terms.</p>
+
+            
+                <div class="ontology-classes">
+                    <h3>Classes</h3>
+                    
+                        <div class="results-table">
+                            <div class="grid header ontology-class-label-value">
+                                <a name="terms_NewsService">
+                                    NewsService
+                                </a>
+                            </div>
+                            <div class="grid row ontology-class-uri">
+                                <div class="label unit one-fifth">URI</div>
+                                <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/NewsService</div>
+                            </div>
+                            
+                                <div class="grid row ontology-class-description">
+                                    <div class="label unit one-fifth">Description</div>
+                                    <div class="value unit four-fifths">Class representing a BBC News service, e.g., BBC Guernsey.</div>
+                                </div>
+                            
+                            
+                                <div class="grid row ontology-class-super">
+                                    <div class="label unit one-fifth">Superclasses</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href='http://www.w3.org/2002/07/owl#Thing'>http://www.w3.org/2002/07/owl#Thing</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                            
+                            
+                                <div class="grid row ontology-class-properties">
+                                    <div class="label unit one-fifth">Properties</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_coveredBy">coveredBy</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_covers">covers</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_hasOutput">hasOutput</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_servedBy">servedBy</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_serves">serves</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    
+                        <div class="results-table">
+                            <div class="grid header ontology-class-label-value">
+                                <a name="terms_Platform">
+                                    Platform
+                                </a>
+                            </div>
+                            <div class="grid row ontology-class-uri">
+                                <div class="label unit one-fifth">URI</div>
+                                <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/Platform</div>
+                            </div>
+                            
+                                <div class="grid row ontology-class-description">
+                                    <div class="label unit one-fifth">Description</div>
+                                    <div class="value unit four-fifths">Represents the different types of platforms through which a web document can be accessed. This is needed to derive the correct web document for consumption from the appropriate platform. If there&#x27;s no specification on platform suitability then the document is considered to be suitable for both.</div>
+                                </div>
+                            
+                            
+                                <div class="grid row ontology-class-super">
+                                    <div class="label unit one-fifth">Superclasses</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href='http://www.w3.org/2002/07/owl#Thing'>http://www.w3.org/2002/07/owl#Thing</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                            
+                            
+                                <div class="grid row ontology-class-properties">
+                                    <div class="label unit one-fifth">Properties</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_platform">platform</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    
+                        <div class="results-table">
+                            <div class="grid header ontology-class-label-value">
+                                <a name="terms_Product">
+                                    Product
+                                </a>
+                            </div>
+                            <div class="grid row ontology-class-uri">
+                                <div class="label unit one-fifth">URI</div>
+                                <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/Product</div>
+                            </div>
+                            
+                                <div class="grid row ontology-class-description">
+                                    <div class="label unit one-fifth">Description</div>
+                                    <div class="value unit four-fifths">Class representing products which create content about things. Within the BBC&#x27;s scope, this would be one of the ten Future Media Products. Outside the BBC, this could refer to an organisation or company whose web pages we link to. Typically the official web pages of things (e.g., http://www.tomdaley.tv/) or their Wikipedia, Twitter and Facebook pages.</div>
+                                </div>
+                            
+                            
+                                <div class="grid row ontology-class-super">
+                                    <div class="label unit one-fifth">Superclasses</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href='http://www.w3.org/2002/07/owl#Thing'>http://www.w3.org/2002/07/owl#Thing</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                            
+                            
+                                <div class="grid row ontology-class-properties">
+                                    <div class="label unit one-fifth">Properties</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_product">product</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    
+                        <div class="results-table">
+                            <div class="grid header ontology-class-label-value">
+                                <a name="terms_WebDocument">
+                                    WebDocument
+                                </a>
+                            </div>
+                            <div class="grid row ontology-class-uri">
+                                <div class="label unit one-fifth">URI</div>
+                                <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/WebDocument</div>
+                            </div>
+                            
+                                <div class="grid row ontology-class-description">
+                                    <div class="label unit one-fifth">Description</div>
+                                    <div class="value unit four-fifths">A web document is a page available from a content-negotiable URL on the BBC website or any web document to which the BBC points at.</div>
+                                </div>
+                            
+                            
+                                <div class="grid row ontology-class-super">
+                                    <div class="label unit one-fifth">Superclasses</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href='http://www.w3.org/2002/07/owl#Thing'>http://www.w3.org/2002/07/owl#Thing</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                            
+                            
+                                <div class="grid row ontology-class-properties">
+                                    <div class="label unit one-fifth">Properties</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_hasOutput">hasOutput</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_platform">platform</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_primaryContent">primaryContent</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_primaryContentOf">primaryContentOf</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_product">product</a>,
+            
+        
+    
+        
+            
+                <a href="#terms_webDocumentCategory">webDocumentCategory</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    
+                        <div class="results-table">
+                            <div class="grid header ontology-class-label-value">
+                                <a name="terms_WebDocumentCategory">
+                                    WebDocumentCategory
+                                </a>
+                            </div>
+                            <div class="grid row ontology-class-uri">
+                                <div class="label unit one-fifth">URI</div>
+                                <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/WebDocumentCategory</div>
+                            </div>
+                            
+                                <div class="grid row ontology-class-description">
+                                    <div class="label unit one-fifth">Description</div>
+                                    <div class="value unit four-fifths">This class is needed to support the different categories of web documents. This is meant to be extended by the clients with categories of web documents that make sense to their own product. For example, dynamically generated aggregations of content or editorially curated profiles of things.</div>
+                                </div>
+                            
+                            
+                                <div class="grid row ontology-class-super">
+                                    <div class="label unit one-fifth">Superclasses</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href='http://www.w3.org/2002/07/owl#Thing'>http://www.w3.org/2002/07/owl#Thing</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                            
+                            
+                                <div class="grid row ontology-class-properties">
+                                    <div class="label unit one-fifth">Properties</div>
+                                    <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_webDocumentCategory">webDocumentCategory</a>
+            
+        
+    
+</div>
+                                </div>
+                            
+                        </div>
+                        <div class="clearfix"></div>
+                    
+                </div>
+            
+
+            <hr/>
+
+            
+                <div class="ontology-properties">
+                    <h3>Properties</h3>
+
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_coveredBy">
+                                coveredBy
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/coveredBy</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates a Thing with a regional BBC service which reports on it.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href='/ontologies/coreconcepts/Thing'>http://www.bbc.co.uk/ontologies/coreconcepts/Thing</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_NewsService">NewsService</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_covers">
+                                covers
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/covers</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates a regional BBC service with a Thing that it regularly reports on.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_NewsService">NewsService</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href='/ontologies/coreconcepts/Thing'>http://www.bbc.co.uk/ontologies/coreconcepts/Thing</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_hasOutput">
+                                hasOutput
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/hasOutput</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates a regional BBC service with an audience facing output such as a News website.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_NewsService">NewsService</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_WebDocument">WebDocument</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_platform">
+                                platform
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/platform</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates a web document with one of the platforms for which the WebDocument is appropriate. If the WebDocument is responsive then this property is not used because the WebDocument is appropriate for both platforms. Only one of the two allowed values (bbc:HighWeb, bbc:Mobile) can be used for every WebDocument. Therefore the property is used with at most one value per WebDocument.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_WebDocument">WebDocument</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_Platform">Platform</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_primaryContent">
+                                primaryContent
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/primaryContent</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Represents the fact that a web document has as primary content the creative work (e.g., a news story about Tom Daley is the primary content of a webpage).</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_WebDocument">WebDocument</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href='/ontologies/creativework/CreativeWork'>http://www.bbc.co.uk/ontologies/creativework/CreativeWork</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_primaryContentOf">
+                                primaryContentOf
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/primaryContentOf</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Inverse of bbc:primaryContent.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href='/ontologies/creativework/CreativeWork'>http://www.bbc.co.uk/ontologies/creativework/CreativeWork</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_WebDocument">WebDocument</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_product">
+                                product
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/product</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates the WebDocument with the particular BBC Product it belongs to. This reflects the editorial branding of the product.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_WebDocument">WebDocument</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_Product">Product</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_servedBy">
+                                servedBy
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/servedBy</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates a populated place with a regional BBC service that it is served by.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href='/ontologies/coreconcepts/Place'>http://www.bbc.co.uk/ontologies/coreconcepts/Place</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_NewsService">NewsService</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_serves">
+                                serves
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/serves</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates a regional BBC service with a populated place that it serves.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_NewsService">NewsService</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href='/ontologies/coreconcepts/Place'>http://www.bbc.co.uk/ontologies/coreconcepts/Place</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                    <div class="results-table">
+                        <div class="grid header ontology-property-label-value">
+                            <a name="terms_webDocumentCategory">
+                                webDocumentCategory
+                            </a>
+                        </div>
+                        <div class="grid row ontology-property-uri">
+                            <div class="label unit one-fifth">URI</div>
+                            <div class="value unit four-fifths">http://www.bbc.co.uk/ontologies/bbc/webDocumentCategory</div>
+                        </div>
+                        
+                            <div class="grid row ontology-property-description">
+                                <div class="label unit one-fifth">Description</div>
+                                <div class="value unit four-fifths">Associates a web document with a category as defined by clients.</div>
+                            </div>
+                        
+                        
+                        
+                        
+                            <div class="grid row ontology-property-domain">
+                                <div class="label unit one-fifth">Domain</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_WebDocument">WebDocument</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                        
+                            <div class="grid row ontology-property-range">
+                                <div class="label unit one-fifth">Range</div>
+                                <div class="value unit four-fifths">
+    
+        
+            
+                <a href="#terms_WebDocumentCategory">WebDocumentCategory</a>
+            
+        
+    
+</div>
+                            </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="clearfix"></div>
+            
+        </div>
+        
+        <div class="clearfix"></div>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<div id="orb-footer" class="orb-footer" dir="ltr"><div id="navp-orb-footer-promo"></div><aside role="complementary"><div id="orb-aside" class="orb-nav-sec b-r b-g-p"><div class="orb-footer-inner" role="navigation" aria-label="BBC"><h2 class="orb-footer-lead">Explore the BBC</h2><div class="orb-footer-primary-links"><ul><li class="orb-nav-home"><a href="https://www.bbc.co.uk">Home</a></li><li class="orb-nav-news"><a href="https://www.bbc.co.uk/news">News</a></li><li class="orb-nav-sport"><a href="https://www.bbc.co.uk/sport">Sport</a></li><li class="orb-nav-weather"><a href="https://www.bbc.co.uk/weather">Weather</a></li><li class="orb-nav-iplayer"><a href="https://www.bbc.co.uk/iplayer">iPlayer</a></li><li class="orb-nav-sounds"><a href="https://www.bbc.co.uk/sounds">Sounds</a></li><li class="orb-nav-cbbc"><a href="https://www.bbc.co.uk/cbbc">CBBC</a></li><li class="orb-nav-cbeebies"><a href="https://www.bbc.co.uk/cbeebies">CBeebies</a></li><li class="orb-nav-food"><a href="https://www.bbc.co.uk/food">Food</a></li><li class="orb-nav-bitesize"><a href="https://www.bbc.co.uk/bitesize">Bitesize</a></li><li class="orb-nav-arts"><a href="https://www.bbc.co.uk/arts">Arts</a></li><li class="orb-nav-taster"><a href="https://www.bbc.co.uk/taster">Taster</a></li><li class="orb-nav-local"><a href="https://www.bbc.co.uk/news/localnews">Local</a></li><li class="orb-nav-three"><a href="https://www.bbc.co.uk/bbcthree">Three</a></li></ul></div></div></div></aside><footer role="contentinfo"><div id="orb-contentinfo" class="orb-nav-sec b-r b-g-p"><script>window.orb.worldwideFooterlinks = '<li class="orb-footer-ads"><a href="https://advertising.bbcworldwide.com/">Advertise with us<'+'/a><'+'/li><li class="orb-footer-adchoices"><a href="https://www.bbc.com/usingthebbc/cookies/how-can-i-change-my-bbc-cookie-settings/">AdChoices / Do Not Sell My Info<'+'/a><'+'/li>';</script><div class="orb-footer-inner"> <ul><li class="orb-footer-terms"><a href="https://www.bbc.co.uk/usingthebbc/terms/">Terms of Use</a></li><li class="orb-footer-about"><a href="https://www.bbc.co.uk/aboutthebbc">About the BBC</a></li><li class="orb-footer-privacy"><a href="https://www.bbc.co.uk/usingthebbc/privacy/">Privacy Policy</a></li><li class="orb-footer-cookies"><a href="https://www.bbc.co.uk/usingthebbc/cookies/">Cookies</a></li><li class="orb-footer-accessibility"><a href="https://www.bbc.co.uk/accessibility/">Accessibility Help</a></li><li class="orb-footer-parental"><a href="https://www.bbc.co.uk/guidance">Parental Guidance</a></li><li class="orb-footer-contact"><a href="https://www.bbc.co.uk/contact">Contact the BBC</a></li><li class="orb-footer-newsletter"><a href="https://www.bbc.co.uk/bbcnewsletter">Get Personalised Newsletters</a></li></ul><small><em class="orb-hilight">Copyright &copy; 2020 BBC.</em> The BBC is not responsible for the content of external sites. <span class="orb-footer-links"><a href="https://www.bbc.co.uk/help/web/links/" class="orb-hilight">Read about our approach to external linking.</a></span></small></div></div></div></footer></div><script id="orb-js-script" data-assetpath="https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864/" src="https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864/js/orb.min.js"></script><script type="text/javascript">require(['orb/lib/_$'], function($) {
+        $.ready(function() {
+            initialiseFooter();
+        });
+
+        var scrollCheckTimer;
+        var didScroll;
+        var previousPosition = 0;
+        var delta = 5;
+        var PROMO_SHOW_BREAKPOINT = 1500;
+        var pageLength = 0;
+
+        function initialiseFooter() {
+            // Suppress this feature on browsers we no longer test
+            var myNav = navigator.userAgent.toLowerCase();
+            var oldIE = (myNav.indexOf('msie') !== -1) && parseInt(myNav.split('msie')[1], 10) <= 10;
+            if (!oldIE) {
+                require(['orb/cookies'], function (bbccookies) {
+                    var disabledByCookie = (parseInt(bbccookies.get('ckns_nav_promofail')) || 0) >= 3;
+                    if (!disabledByCookie) {
+                        window.bbcuser.isUKCombined().then(function(isUK) {
+                            if (isUK) {
+                                setUpLazyLoading();
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        function setUpLazyLoading() {
+            // offsetHeight is expensive to calculate, only do it once.
+            pageLength = Math.abs(document.body.offsetHeight);
+
+            if (pageLength < getViewportHeight() + 300 || pageLength - getCurrentPosition() < PROMO_SHOW_BREAKPOINT) {
+                loadPromo();
+
+            } else {
+                window.onscroll = function () {
+                    didScroll = true;
+                };
+
+                scrollCheckTimer = setInterval(function () {
+                    if (didScroll) {
+                        hasScrolled();
+                        didScroll = false;
+                    }
+                }, 250);
+            }
+        }
+
+        function loadPromo() {
+            clearInterval(scrollCheckTimer);
+
+            require(['orb/async/_footerpromo'], function(promo) {
+                promo.init('https://navpromo.api.bbci.co.uk', '');
+            });
+        }
+
+        function getViewportHeight() {
+            return window.innerHeight;
+        }
+
+        function getCurrentPosition() {
+            return Math.abs(window.scrollY || document.body.scrollTop || document.documentElement.scrollTop);
+        }
+
+        function hasScrolled() {
+            var currentPosition = getCurrentPosition();
+            if (Math.abs(previousPosition - currentPosition) <= delta) {
+                return;
+            }
+            if (currentPosition > previousPosition) {
+                if ((pageLength - currentPosition) <= PROMO_SHOW_BREAKPOINT) {
+                    loadPromo();
+                }
+            }
+            previousPosition = currentPosition;
+        }
+
+    })</script><script type="text/javascript">/*<![CDATA[*/
+                require(['orb/nav'], function(nav) {
+                    window.bbcuser.isUKCombined().then(function(isUK) {
+                        if (isUK) {
+                            nav.loadJs('https://nav.files.bbci.co.uk/orbit/1b2e292884201dd13064a9204e177864/js/edr.min.js');
+                        }
+                    });
+                });
+            /*]]>*/</script><script type="text/javascript">require.config({
+            paths: {
+                "mybbc/templates": '//mybbc.files.bbci.co.uk/notification-ui/4.0.8/templates',
+                "mybbc/notifications": '//mybbc.files.bbci.co.uk/notification-ui/4.0.8/js'
+            }
+        });
+
+        require(['mybbc/notifications/NotificationsMain', 'idcta/idcta-1'], function (NotificationsMain, idcta) {
+
+            var loadNotifications = function (isUK) {
+                if (isUK) {
+                    window.bbcpage.loadCSS('//mybbc.files.bbci.co.uk/notification-ui/4.0.8/css/main.min.css').then(function() {
+                        NotificationsMain.run(idcta, '//mybbc.files.bbci.co.uk/notification-ui/4.0.8/');
+                    });
+                }
+            };
+            
+            window.bbcuser.isUKCombined().then(function(isUK) {
+                loadNotifications(isUK);
+            });
+        });</script><!-- BBCDOTCOM bodyLast --><div class="bbccom_display_none"><script type="text/javascript">/*<![CDATA[*/ if (window.bbcdotcom && window.bbcdotcom.analytics && bbcdotcom.config && !bbcdotcom.config.isSportApp() && !bbcdotcom.config.isReel()) { bbcdotcom.checkThirdPartyFirst(bbcdotcom.analytics.page, bbcdotcom.analytics); } /*]]>*/</script><noscript><img src="//ssc.api.bbc.com/?c1=2&c2=19293874&ns_site=bbc&name=" height="1" width="1" alt=""></noscript><script type="text/javascript">/*<![CDATA[*/ if (window.bbcdotcom && bbcdotcom.currencyProviders) { bbcdotcom.checkThirdPartyFirst(bbcdotcom.currencyProviders.write, bbcdotcom.currencyProviders); } /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ if (window.bbcdotcom && bbcdotcom.currencyProviders) { bbcdotcom.checkThirdPartyFirst(bbcdotcom.currencyProviders.postWrite, bbcdotcom.currencyProviders); } /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ if (window.bbcdotcom && bbcdotcom.data && bbcdotcom.data.stats && bbcdotcom.data.stats === 1 && bbcdotcom.utils && window.location.pathname === '/') { var wwhpEdition = bbcdotcom.utils.getMetaPropertyContent('wwhp-edition'); var _sf_async_config={}; /** CONFIGURATION START **/ _sf_async_config.uid = 50924; _sf_async_config.domain = "bbc.co.uk"; _sf_async_config.title = "Homepage"+(wwhpEdition !== '' ? ' - '+wwhpEdition : ''); _sf_async_config.sections = "Homepage"+(wwhpEdition !== '' ? ', Homepage - '+wwhpEdition : ''); _sf_async_config.region = wwhpEdition; _sf_async_config.path = "/"+(wwhpEdition !== '' ? '?'+wwhpEdition : ''); /** CONFIGURATION END **/ (function(){ function loadChartbeat() { window._sf_endpt=(new Date()).getTime(); var e = document.createElement("script"); e.setAttribute("language", "javascript"); e.setAttribute("type", "text/javascript"); e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js'); document.body.appendChild(e); } var oldonload = window.onload; window.onload = (typeof window.onload != "function") ? loadChartbeat : function() { oldonload(); loadChartbeat(); }; })(); } /*]]>*/</script><script type="text/javascript">/*<![CDATA[*/ (function() { window.bbcdotcom.bodyLast = true; }()); /*]]>*/</script></div><!-- BBCDOTCOM all code in page --><script type="text/javascript">if (window.SEARCHBOX.suppress === false && window.SEARCHBOX.locale && /^en-?.*?/.test(window.SEARCHBOX.locale)) {
+    require.config({
+      paths: {
+        "search/searchbox": window.SEARCHBOX.searchboxAppStaticPrefix,
+      }
+    });
+
+    if (bbcuser && bbcuser.isUKCombined) {
+        bbcuser.isUKCombined().then(function (isUK) {
+            if (isUK) {
+                require(['search/searchbox/searchboxDrawer'], function (SearchboxDrawer) {
+                  SearchboxDrawer.run(window.SEARCHBOX);
+                });
+            }
+        });
+    }
+
+  }</script>  <script type="text/javascript">window.COOKIES_STATIC_HOST = 'https://nav.files.bbci.co.uk/orbit-webmodules/0.0.2-448.45dcd56/cookie-banner/cookie-prompt/';</script><script src="https://nav.files.bbci.co.uk/orbit-webmodules/0.0.2-448.45dcd56/cookie-banner/cookie-banners.bundle.js" async=""></script><script type="text/javascript">require(["istats-1","orb/cookies"],function(o,t){if(t.isAllowed("s1"))try{if(!require.s.contexts._.config.paths.idcta)return void i();require(["idcta/idcta-1"],function(t){t&&"function"==typeof t.getIStatsLabels&&o.addLabels(t.getIStatsLabels()),i()},function(t){throw t})}catch(t){console&&"function"==typeof console.log&&console.log("an exception occurred while adding idcta labels to istats, invoking istats without them",t),i()}function i(){o.invoke()}});</script><script type="text/javascript">"use strict";window.__reverb.__reverbLoadedPromise.then(function(e){return e.initialise().then(function(){return e.viewEvent()})},function(){console.log("Failed to load reverb. No event sent")});</script><script src="https://nav.files.bbci.co.uk/orbit-webmodules/0.0.2-448.45dcd56/detectview/detectview.bundle.js" async=""></script>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+@prefix bbc:            <http://www.bbc.co.uk/ontologies/bbc/> .
+@prefix coreconcepts:   <http://www.bbc.co.uk/ontologies/coreconcepts/> .
+@prefix cwork:          <http://www.bbc.co.uk/ontologies/creativework/> .
+@prefix foaf:           <http://xmlns.com/foaf/0.1/> .
+@prefix owl:            <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://bbc.co.uk/ontologies/mappings>
+      rdf:type owl:Ontology ;
+      rdfs:label "Ontology Mappings" ;
+      rdfs:comment "This document contains the mappings of the BBC ontologies' terms to LOD vocabularies for ease of alignment of terms and data from multiple domains." .
+
+bbc:WebDocument
+      rdfs:subClassOf foaf:Document .
+
+coreconcepts:Event
+      rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event> , <http://schema.org/Event> .
+
+coreconcepts:Organisation
+      rdfs:subClassOf <http://schema.org/Organization> , foaf:Organization .
+
+coreconcepts:Person
+      rdfs:subClassOf <http://schema.org/Person> , foaf:Person .
+
+coreconcepts:preferredLabel
+      rdfs:subPropertyOf <http://www.w3.org/2004/02/skos/core#prefLabel> .
+
+coreconcepts:primaryTopic
+      rdfs:subPropertyOf foaf:primaryTopic .
+
+coreconcepts:sameAs
+      rdfs:subPropertyOf owl:sameAs .
+
+cwork:CreativeWork
+      rdfs:subClassOf <http://schema.org/CreativeWork> .
+
+<http://www.bbc.co.uk/ontologies/provenance/Ontology>
+      rdfs:subClassOf owl:Ontology .

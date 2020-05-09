@@ -1,0 +1,336 @@
+# baseURI: http://www.bbc.co.uk/ontologies/coreconcepts
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://purl.org/dc/terms/
+# imports: http://www.bbc.co.uk/ontologies/provenance
+
+@prefix bbc: <http://www.bbc.co.uk/ontologies/bbc/> .
+@prefix core: <http://www.bbc.co.uk/ontologies/coreconcepts/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix provenance: <http://www.bbc.co.uk/ontologies/provenance/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+#@prefix audience: <http://www.bbc.co.uk/ontologies/audience/> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts>
+      rdf:type provenance:Ontology , owl:Ontology ;
+      rdfs:comment "The generic BBC ontology for people, places, events, organisations, themes which represent things that make sense across the BBC. This model is meant to be generic enough, and allow clients (domain experts) link their own concepts e.g., athletes or politicians using rdfs:sublClassOf the particular concept."@en-gb ;
+      rdfs:label "Core Concepts Ontology"@en-gb ;
+      dc:creator <mailto:tom.hodgkinson@bbc.co.uk>, <mailto:jeremy.tarling@bbc.co.uk> ;
+      dc:date "2019-11-21"^^xsd:date ;
+      dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+      provenance:canonicalLocation
+              "https://github.com/bbc/ontologies/blob/master/core/coreconcepts.ttl"^^xsd:string ;
+      provenance:changeReason
+              "Added editoriallySensitive property"@en-gb ;
+      provenance:public "true"^^xsd:boolean ;
+      provenance:slug "coreconcepts"^^xsd:string ;
+      provenance:version "1.17"^^xsd:string ;
+      owl:imports dc: , dcterms: , <http://www.bbc.co.uk/ontologies/provenance> ;
+      owl:priorVersion <http://www.bbc.co.uk/ontologies/coreconcepts/1.16> ;
+      owl:versionIRI <http://www.bbc.co.uk/ontologies/coreconcepts/1.17> ;
+      owl:versionInfo "1.17"^^xsd:string .
+
+core:Event
+      rdf:type owl:Class ;
+      rdfs:comment "The class of events in the BBC. This is a generic class to represent events (music events, historic events, sports events, politics events, e.t.c.)."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "Event"@en-gb ;
+      rdfs:subClassOf core:Thing .
+
+core:Organisation
+      rdf:type owl:Class ;
+      rdfs:comment "The class of organisations in the BBC. E.g., Businesses."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "Organisation"@en-gb ;
+      rdfs:subClassOf core:Thing .
+
+core:Person
+      rdf:type owl:Class ;
+      rdfs:comment "The class of people in the BBC. Subclasses of this can be all types of people such as politicians, athletes, historic figures, contributors in programmes e.t.c."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "Person"@en-gb ;
+      rdfs:subClassOf core:Thing .
+
+core:Place
+      rdf:type owl:Class ;
+      rdfs:comment "The class of places in the BBC."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "Place"@en-gb ;
+      rdfs:subClassOf core:Thing .
+
+core:Theme
+      rdf:type owl:Class ;
+      rdfs:comment "This concept is used to represent intangible things or abstract concepts.  For example, Financial Crisis, Midwifery, Happiness."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "Theme"@en-gb ;
+      rdfs:subClassOf core:Thing .
+
+core:CeremonialCounty
+      rdf:type owl:Class ;
+      rdfs:comment "These are geographic counties, often representing more permanent features of English geography, and to distinguish them from counties of England which have a present-day administrative function."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "CeremonialCounty"@en-gb ;
+      rdfs:subClassOf core:Place .
+
+core:TraditionalCounty
+      rdf:type owl:Class ;
+      rdfs:comment "The traditional counties of Northern Ireland were the principal local government divisions of Northern Ireland from its creation in 1921 until 1972, when their governmental features were abolished and replaced with twenty-six unitary authorities"@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "TraditionalCounty"@en-gb ;
+      rdfs:subClassOf core:Place .
+
+core:CrownDependency
+      rdf:type owl:Class ;
+      rdfs:comment "Crown dependencies are independently administered jurisdictions which do not form part of either the United Kingdom or the British Overseas Territories. They are self-governing possessions of the Crown (defined uniquely in each jurisdiction)."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "CrownDependency"@en-gb ;
+      rdfs:subClassOf core:Place .
+
+core:Thing
+      rdf:type owl:Class ;
+      rdfs:comment "The superclass of all things the BBC creates or talks about."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "Thing"@en-gb ;
+      rdfs:subClassOf owl:Thing .
+
+# Language
+core:Language
+      a owl:Class ;
+      rdfs:label "Language"@en-gb ;
+      rdfs:comment "Human languages supported by the BBC."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:subClassOf core:Thing .
+
+# Intended audience
+core:IntendedAudience
+      a owl:Class ;
+      rdfs:comment "An intended audience for a BBC asset."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "Intended Audience"@en-gb ;
+      rdfs:subClassOf core:Thing .
+
+# Editorial Tone
+core:EditorialTone
+      a owl:Class ;
+      rdfs:comment "The editorial tone of a BBC asset."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "EditorialTone"@en-gb ;
+      rdfs:subClassOf core:Thing .
+
+
+##### properties ####
+
+
+core:dateOfBirth
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "A person's date of birth."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:domain core:Person ;
+      rdfs:label "dateOfBirth"@en-gb ;
+      rdfs:range xsd:dateTime .
+
+core:dateOfDeath
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "A person's date of death."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:domain core:Person ;
+      rdfs:label "dateOfDeath"@en-gb ;
+      rdfs:range xsd:dateTime .
+
+core:disambiguationHint
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "One or two words to distinguish between entities that have similar labels - often displayed to both internal and external audiences."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "disambiguationHint"@en-gb ;
+      rdfs:range xsd:string .
+
+# Language
+core:language
+      a owl:ObjectProperty ;
+      rdfs:label "language"@en-gb ;
+      rdfs:comment "A human language."@en-gb ;
+      rdfs:range core:Language ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> .
+
+# Note: https://www.w3.org/International/questions/qa-html-language-declarations
+core:languageCode
+    	a owl:DatatypeProperty ;
+    	rdfs:label "languageCode"@en-gb ;
+    	rdfs:comment "A human language's BCP 47 code, incorpoorating ISO 639-1 code and optional ISO 3166-2 sub-code."@en-gb ;
+	    rdfs:subPropertyOf core:language ;
+    	rdfs:domain core:Language ;
+    	rdfs:range xsd:string ;
+    	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> .
+
+# Intended audience
+core:intendedAudience
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "This property associates a Thing with an intended audience."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "intendedAudience"@en-gb ;
+      rdfs:range core:IntendedAudience .
+
+# Editorial Tone
+core:editorialTone
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "This property associates a Thing with an editorial tone."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "editorialTone"@en-gb ;
+      rdfs:range core:EditorialTone .
+
+# Editorial Sensitivity
+
+core:editoriallySensitive
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "editoriallySensitive"@en-gb ;
+  rdfs:comment "Whether a BBC asset is editorally sensitive."@en-gb ;
+  rdfs:isDefinedBy core: ;
+  rdfs:range xsd:boolean .
+
+core:notablyAssociatedWith
+      rdf:type owl:ObjectProperty ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:comment "This is a high level property aiming to associate any core thing to any other core thing. For example that Tom Daley is notablyAssociatedWith diving or Glastonbury is notablyAssociatedWith music."@en-gb ;
+      rdfs:label "notablyAssociatedWith"@en-gb .
+
+core:occupation
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "This property associates a person with a thematic area he or she worked in, for example Annie Lennox with Music."@en-gb ;
+      rdfs:domain core:Person ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "occupation"@en-gb ;
+      rdfs:range core:Theme ;
+      rdfs:subPropertyOf core:notablyAssociatedWith .
+
+core:placeOfBirth
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "A person's place of birth."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:domain core:Person ;
+      rdfs:label "placeOfBirth"@en-gb ;
+      rdfs:range core:Place ;
+      rdfs:subPropertyOf core:notablyAssociatedWith .
+
+core:placeOfDeath
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "A person's place of death"@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:domain core:Person ;
+      rdfs:label "placeOfDeath"@en-gb ;
+      rdfs:range core:Place ;
+      rdfs:subPropertyOf core:notablyAssociatedWith .
+
+core:knownFor
+    	rdf:type owl:DatatypeProperty ;
+    	rdfs:comment "A short summary of what a person is notably known for"@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+    	rdfs:domain core:Person ;
+    	rdfs:label "knownFor"@en-gb ;
+    	rdfs:range xsd:string .
+
+core:label
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "The a label for a thing. A thing may have one label per language."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "label"@en-gb ;
+      rdfs:range xsd:string .
+
+core:preferredLabel
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "The BBC editorially preferred label for a thing. A thing may have one and only one preferredLabel"@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "preferredLabel"@en-gb ;
+      rdfs:range xsd:string ;
+      rdfs:subPropertyOf core:label .
+
+core:primaryTopic
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Represents the fact that a thing (usually concept, e.g., Tom Daley) is the primary topic of a web document."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "primaryTopic"@en-gb ;
+      rdfs:range core:Thing ;
+      owl:inverseOf core:primaryTopicOf .
+
+core:primaryTopicOf
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Represents the fact that a thing (usually concept, e.g., Tom Daley) is the primary topic of a web document."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "primaryTopicOf"@en-gb ;
+      rdfs:range bbc:WebDocument ;
+      owl:inverseOf core:primaryTopic .
+
+core:sameAs
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "Indicates that something is the same as something else, but in a way that is slightly weaker than owl:sameAs. It's purpose is to connect separate identities of the same thing, whilst keeping separation between the original statements of each."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "sameAs"@en-gb ;
+      rdfs:range owl:Thing .
+
+core:shortLabel
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "A short label for a thing usually needed for presentation purposes."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "shortLabel"@en-gb ;
+      rdfs:range xsd:string .
+
+core:slug
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "Human readable keywords that may be used in a programmatic fashion e.g., manchester-city."@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "slug"@en-gb ;
+      rdfs:range xsd:string .
+
+core:startDate
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "Start Date of an Event"@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "startDate"@en-gb ;
+      rdfs:domain core:Event ;
+      rdfs:range xsd:date .
+
+core:endDate
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "End Date of an Event"@en-gb ;
+      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      rdfs:label "endDate"@en-gb ;
+      rdfs:domain core:Event ;
+      rdfs:range xsd:date .
+
+core:eventPerson
+    rdf:type owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+    rdfs:domain core:Event ;
+    rdfs:range core:Person ;
+    rdfs:comment "person as agent in an event"@en-gb ;
+    rdfs:label "eventPerson" ;
+    rdfs:subPropertyOf core:notablyAssociatedWith .
+
+core:eventOrganisation
+    rdf:type owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+    rdfs:domain core:Event ;
+    rdfs:range core:Organisation ;
+    rdfs:comment "organisation as agent in an event"@en-gb ;
+    rdfs:label "eventOrganisation" ;
+    rdfs:subPropertyOf core:notablyAssociatedWith .
+
+core:eventPlace
+    rdf:type owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+    rdfs:domain core:Event ;
+    rdfs:range core:Place ;
+    rdfs:comment "place as location of an event"@en-gb ;
+    rdfs:label "eventPlace" ;
+    rdfs:subPropertyOf core:notablyAssociatedWith .
+
+core:eventTheme
+    rdf:type owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+    rdfs:domain core:Event ;
+    rdfs:range core:Theme ;
+    rdfs:comment "theme as factor in an event"@en-gb ;
+    rdfs:label "eventTheme" ;
+    rdfs:subPropertyOf core:notablyAssociatedWith .
