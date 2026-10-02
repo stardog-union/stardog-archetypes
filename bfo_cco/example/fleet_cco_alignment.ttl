@@ -1,0 +1,32 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix cco: <https://www.commoncoreontologies.org/> .
+@prefix : <https://example.org/fleet#> .
+
+# Alignment of the fleet ontology to BFO/CCO. Loaded only into the archetype test DB.
+
+:FighterAircraft    rdfs:subClassOf cco:ont00001043 .   # Aircraft
+:TransportAircraft  rdfs:subClassOf cco:ont00001043 .   # Aircraft
+:MainBattleTank     rdfs:subClassOf cco:ont00001319 .   # Tank
+:TacticalTruck      rdfs:subClassOf cco:ont00000053 .   # Ground Motor Vehicle
+:ReconSatellite     rdfs:subClassOf cco:ont00000352 .   # Satellite Artifact
+:TurbofanEngine     rdfs:subClassOf cco:ont00000688 .   # Turbofan Air-Breathing Jet Engine
+:EngineModule       rdfs:subClassOf cco:ont00000995 .   # Material Artifact
+:BladeSet           rdfs:subClassOf cco:ont00000995 .   # Material Artifact
+:TargetingPod       rdfs:subClassOf cco:ont00000995 .   # Material Artifact
+:InfraredCamera     rdfs:subClassOf cco:ont00000617 .   # Infrared Camera
+:SensorCapability   rdfs:subClassOf cco:ont00001241 .   # Sensor Function
+:SensorPlatformRole rdfs:subClassOf cco:ont00002074 .   # Sensor Platform Role
+:MaintenanceEvent   rdfs:subClassOf cco:ont00000950 .   # Act of Maintenance
+:AirBase            rdfs:subClassOf cco:ont00000483 .   # Military Base
+:ArmyPost           rdfs:subClassOf cco:ont00000483 .   # Military Base
+:Hangar             rdfs:subClassOf cco:ont00000192 .   # Facility
+:MotorPool          rdfs:subClassOf cco:ont00000192 .   # Facility
+
+:installedOn   rdfs:subPropertyOf obo:BFO_0000176 .     # continuant part of
+:partOf        rdfs:subPropertyOf obo:BFO_0000176 .     # continuant part of
+:housedIn      rdfs:subPropertyOf obo:BFO_0000171 .     # located in
+:locatedAt     rdfs:subPropertyOf obo:BFO_0000171 .     # located in
+:hasCapability rdfs:subPropertyOf obo:BFO_0000196 .     # bearer of
+:hasRole       rdfs:subPropertyOf obo:BFO_0000196 .     # bearer of
+:performedOn   rdfs:subPropertyOf obo:BFO_0000057 .     # has participant

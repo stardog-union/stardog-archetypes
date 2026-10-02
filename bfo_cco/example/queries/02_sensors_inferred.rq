@@ -1,0 +1,15 @@
+# Which assets are sensors?
+# Run with reasoning on against both example databases (see ../README.md).
+# expected without archetype: no rows
+# expected with bfo_cco:      8 rows: IR camera IRC-1 ... IRC-6, Satellite SAT-1, Satellite SAT-2
+# why: Nothing is typed Sensor. The archetype restores CCO's definition (material entity bearing a sensor function), which Stardog SL otherwise drops.
+PREFIX : <https://example.org/fleet#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX cco: <https://www.commoncoreontologies.org/>
+PREFIX bfo_cco: <urn:stardog:archetype:bfo_cco#>
+
+SELECT ?sensor
+FROM <urn:fleet:kg>
+WHERE { ?s a cco:ont00000569 ; rdfs:label ?sensor . }
+ORDER BY ?sensor

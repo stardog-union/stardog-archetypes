@@ -1,0 +1,97 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix cco: <https://www.commoncoreontologies.org/> .
+@prefix ex: <urn:bfo_cco:test:> .
+
+# Small CCO-typed fixture for the structural tests (run_structural_tests.py).
+# Every expected result is listed in that script.
+
+# --- Parthood chain, forward direction: blade1 < fan1 < jet1 < aircraft1
+ex:aircraft1 a cco:ont00001043 .                 # Aircraft
+ex:jet1      a cco:ont00000688 .                 # Turbofan Air-Breathing Jet Engine
+ex:fan1      a cco:ont00000338 .                 # Fan
+ex:blade1    a cco:ont00000995 .                 # Material Artifact
+ex:blade1 obo:BFO_0000176 ex:fan1 .              # continuant part of
+ex:fan1   obo:BFO_0000176 ex:jet1 .
+ex:jet1   obo:BFO_0000176 ex:aircraft1 .
+
+# --- Parthood chain, inverse direction only: aircraft2 > jet2 > fan2
+ex:aircraft2 a cco:ont00001043 .
+ex:jet2      a cco:ont00000688 .
+ex:fan2      a cco:ont00000338 .
+ex:aircraft2 obo:BFO_0000178 ex:jet2 .           # has continuant part
+ex:jet2      obo:BFO_0000178 ex:fan2 .
+
+# --- Location chain: aircraft1 in hangar1 in base1
+ex:hangar1 a cco:ont00000192 .                   # Facility
+ex:base1   a cco:ont00000483 .                   # Military Base
+ex:aircraft1 obo:BFO_0000171 ex:hangar1 .        # located in
+ex:hangar1   obo:BFO_0000171 ex:base1 .
+
+# --- Sensor (defined class)
+ex:cam1 a cco:ont00000617 .                      # Infrared Camera
+ex:sf1  a cco:ont00001241 .                      # Sensor Function
+ex:cam1 obo:BFO_0000196 ex:sf1 .                 # bearer of            -> Sensor
+ex:cam2 a cco:ont00000617 .
+ex:sf2  a cco:ont00001241 .
+ex:sf2  obo:BFO_0000197 ex:cam2 .                # inheres in (inverse) -> Sensor
+ex:cam3 a cco:ont00000617 .
+ex:af3  a cco:ont00000601 .                      # Imaging Artifact Function (not a sensor function)
+ex:cam3 obo:BFO_0000196 ex:af3 .                 #                      -> NOT Sensor
+ex:sat1  a cco:ont00000352 .                     # Satellite Artifact
+ex:role1 a cco:ont00002073 .                     # Sensor Role
+ex:sat1 obo:BFO_0000196 ex:role1 .               #                      -> Sensor
+
+# --- Sensor Platform (defined class)
+ex:spr1 a cco:ont00002074 .                      # Sensor Platform Role
+ex:aircraft1 obo:BFO_0000196 ex:spr1 .           #                      -> Sensor Platform
+
+# --- Sensing Process (defined class)
+ex:proc1 a obo:BFO_0000015 .                     # process
+ex:proc1 obo:BFO_0000055 ex:sf1 .                # realizes             -> Sensing Process
+
+# --- Planned Act (defined class, 3-hop chain)
+ex:plan1 a cco:ont00000974 .                     # Plan (a Prescriptive ICE)
+ex:act1  a cco:ont00000005 .                     # Act (NOT Act of Maintenance: CCO asserts that is already a Planned Act)
+ex:role2 a obo:BFO_0000023 .                     # role
+ex:act1  obo:BFO_0000055 ex:role2 .              # realizes
+ex:role2 obo:BFO_0000059 ex:plan1 .              # concretizes          -> act1 Planned Act
+ex:act3  a cco:ont00000005 .
+ex:disp1 a obo:BFO_0000016 .                     # disposition
+ex:act3  obo:BFO_0000055 ex:disp1 .
+ex:disp1 obo:BFO_0000059 ex:plan1 .              #                      -> act3 Planned Act
+ex:act2  a cco:ont00000005 .
+ex:role3 a obo:BFO_0000023 .
+ex:act2  obo:BFO_0000055 ex:role3 .              # role concretizes nothing -> NOT Planned Act
+
+# --- Geospatial Location (defined class)
+ex:geo1 a cco:ont00000472 .                      # Geospatial Region
+ex:geo1 obo:BFO_0000124 ex:aircraft1 .           # location of material entity -> Geospatial Location
+ex:geo2 a cco:ont00000472 .
+ex:geo2 obo:BFO_0000183 ex:proc1 .               # environs process            -> Geospatial Location
+ex:geo3 a cco:ont00000472 .                      # nothing                     -> NOT Geospatial Location
+
+# --- Sub-properties feeding the closure
+ex:wingroot1 a cco:ont00000995 .
+ex:wingroot1 cco:ont00001944 ex:aircraft2 .       # spatial part of      -> continuantPartOfTransitive aircraft2
+ex:member1 a obo:BFO_0000030 .                   # object
+ex:crew1   a obo:BFO_0000027 .                   # object aggregate
+ex:member1 obo:BFO_0000129 ex:crew1 .            # member part of       -> continuantPartOfTransitive crew1
+
+# --- Remaining defined-class branches
+ex:mast1 a cco:ont00000995 .                     # Material Artifact
+ex:sdaf1 a cco:ont00000023 .                     # Sensor Deployment Artifact Function
+ex:mast1 obo:BFO_0000196 ex:sdaf1 .              #                      -> Sensor Platform
+ex:proc2 a obo:BFO_0000015 .
+ex:proc2 obo:BFO_0000055 ex:role1 .              # realizes Sensor Role -> Sensing Process
+ex:site1 a obo:BFO_0000029 .                     # site
+ex:geo4  a cco:ont00000472 .
+ex:geo4  obo:BFO_0000124 ex:site1 .              # location of site     -> Geospatial Location
+ex:cfb1  a obo:BFO_0000140 .                     # continuant fiat boundary
+ex:geo5  a cco:ont00000472 .
+ex:geo5  obo:BFO_0000124 ex:cfb1 .               # location of CFB      -> Geospatial Location
+
+# --- Seeded disjointness violations (exactly these two should be reported)
+ex:bad1 a cco:ont00001043, cco:ont00000005 .     # Aircraft AND Act (continuant AND occurrent)
+ex:bad2 a cco:ont00000003, cco:ont00000077 .     # Designative Name AND Code Identifier (via Non-Name Identifier)

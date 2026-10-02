@@ -1,0 +1,99 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix : <https://example.org/fleet#> .
+
+# Fleet readiness domain ontology used to test the bfo_cco archetype with Voicebox.
+# Identical in both test databases. The CCO alignment lives in fleet_cco_alignment.ttl
+# and is loaded only into the archetype database.
+# Shared properties use schema:domainIncludes/rangeIncludes (no rdfs:domain) so that
+# reasoning never infers class membership from property use.
+
+<https://example.org/fleet> a owl:Ontology ;
+    rdfs:label "Fleet readiness ontology"@en ;
+    rdfs:comment "Aircraft, ground vehicles and satellites of a notional joint fleet: where they are housed, what components they contain, what sensing capabilities they carry, and the maintenance performed on them."@en .
+
+# ---------------------------------------------------------------- classes
+:FighterAircraft a owl:Class ; rdfs:label "Fighter Aircraft"@en ;
+    rdfs:comment "A fixed-wing combat aircraft, identified by its tail number."@en .
+:TransportAircraft a owl:Class ; rdfs:label "Transport Aircraft"@en ;
+    rdfs:comment "A fixed-wing cargo or airlift aircraft, identified by its tail number. Transports have four engines."@en .
+:MainBattleTank a owl:Class ; rdfs:label "Main Battle Tank"@en ;
+    rdfs:comment "A tracked armored fighting vehicle, identified by its serial number."@en .
+:TacticalTruck a owl:Class ; rdfs:label "Tactical Truck"@en ;
+    rdfs:comment "A wheeled military cargo truck, identified by its serial number."@en .
+:ReconSatellite a owl:Class ; rdfs:label "Reconnaissance Satellite"@en ;
+    rdfs:comment "An Earth-observation satellite that carries an imaging sensor capability."@en .
+:TurbofanEngine a owl:Class ; rdfs:label "Turbofan Engine"@en ;
+    rdfs:comment "A turbofan jet engine installed on an aircraft, identified by its serial number."@en .
+:EngineModule a owl:Class ; rdfs:label "Engine Module"@en ;
+    rdfs:comment "A replaceable module of a turbofan engine: either the fan module or the core module."@en .
+:BladeSet a owl:Class ; rdfs:label "Fan Blade Set"@en ;
+    rdfs:comment "The set of fan blades that is part of an engine's fan module."@en .
+:TargetingPod a owl:Class ; rdfs:label "Targeting Pod"@en ;
+    rdfs:comment "An externally mounted pod installed on a fighter aircraft; it contains an infrared camera."@en .
+:InfraredCamera a owl:Class ; rdfs:label "Infrared Camera"@en ;
+    rdfs:comment "An infrared imaging camera, part of a targeting pod."@en .
+:SensorCapability a owl:Class ; rdfs:label "Sensor Capability"@en ;
+    rdfs:comment "The capability of a piece of equipment to detect and measure something (for example infrared imaging). Equipment has this capability via hasCapability."@en .
+:SensorPlatformRole a owl:Class ; rdfs:label "Sensor Platform Role"@en ;
+    rdfs:comment "The role a vehicle has when it carries sensors into position. A vehicle has this role via hasRole."@en .
+:MaintenanceEvent a owl:Class ; rdfs:label "Maintenance Event"@en ;
+    rdfs:comment "A scheduled maintenance action performed on one vehicle under a work order, on a given date."@en .
+:AirBase a owl:Class ; rdfs:label "Air Base"@en ;
+    rdfs:comment "An air force installation that contains hangars."@en .
+:ArmyPost a owl:Class ; rdfs:label "Army Post"@en ;
+    rdfs:comment "An army installation that contains motor pools."@en .
+:Hangar a owl:Class ; rdfs:label "Hangar"@en ;
+    rdfs:comment "A building at an air base in which aircraft are housed."@en .
+:MotorPool a owl:Class ; rdfs:label "Motor Pool"@en ;
+    rdfs:comment "A facility at an army post in which ground vehicles are housed."@en .
+
+# ---------------------------------------------------------------- object properties
+:installedOn a owl:ObjectProperty ; rdfs:label "installed on"@en ;
+    rdfs:comment "Links an engine or targeting pod to the aircraft it is installed on."@en ;
+    schema:domainIncludes :TurbofanEngine, :TargetingPod ;
+    schema:rangeIncludes :FighterAircraft, :TransportAircraft .
+:partOf a owl:ObjectProperty ; rdfs:label "part of"@en ;
+    rdfs:comment "Links a component to the assembly it is a direct part of: an engine module to its engine, a fan blade set to its fan module, an infrared camera to its targeting pod."@en ;
+    schema:domainIncludes :EngineModule, :BladeSet, :InfraredCamera ;
+    schema:rangeIncludes :TurbofanEngine, :EngineModule, :TargetingPod .
+:housedIn a owl:ObjectProperty ; rdfs:label "housed in"@en ;
+    rdfs:comment "Links a vehicle to the hangar or motor pool it is housed in."@en ;
+    schema:domainIncludes :FighterAircraft, :TransportAircraft, :MainBattleTank, :TacticalTruck ;
+    schema:rangeIncludes :Hangar, :MotorPool .
+:locatedAt a owl:ObjectProperty ; rdfs:label "located at"@en ;
+    rdfs:comment "Links a hangar or motor pool to the base or post it is located at."@en ;
+    schema:domainIncludes :Hangar, :MotorPool ;
+    schema:rangeIncludes :AirBase, :ArmyPost .
+:hasCapability a owl:ObjectProperty ; rdfs:label "has capability"@en ;
+    rdfs:comment "Links equipment to a sensor capability it has."@en ;
+    schema:domainIncludes :InfraredCamera, :ReconSatellite ;
+    schema:rangeIncludes :SensorCapability .
+:hasRole a owl:ObjectProperty ; rdfs:label "has role"@en ;
+    rdfs:comment "Links a vehicle to a role it has, such as sensor platform."@en ;
+    schema:domainIncludes :FighterAircraft, :ReconSatellite ;
+    schema:rangeIncludes :SensorPlatformRole .
+:performedOn a owl:ObjectProperty ; rdfs:label "performed on"@en ;
+    rdfs:comment "Links a maintenance event to the vehicle it was performed on."@en ;
+    schema:domainIncludes :MaintenanceEvent ;
+    schema:rangeIncludes :FighterAircraft, :TransportAircraft, :MainBattleTank, :TacticalTruck .
+
+# ---------------------------------------------------------------- datatype properties
+:tailNumber a owl:DatatypeProperty ; rdfs:label "tail number"@en ;
+    rdfs:comment "The tail number painted on an aircraft, e.g. AF-1001."@en ;
+    schema:domainIncludes :FighterAircraft, :TransportAircraft ; rdfs:range xsd:string .
+:serialNumber a owl:DatatypeProperty ; rdfs:label "serial number"@en ;
+    rdfs:comment "The manufacturer serial number of an engine, tank, truck or satellite."@en ;
+    schema:domainIncludes :TurbofanEngine, :MainBattleTank, :TacticalTruck, :ReconSatellite ; rdfs:range xsd:string .
+:hoursSinceOverhaul a owl:DatatypeProperty ; rdfs:label "hours since overhaul"@en ;
+    rdfs:comment "Operating hours accumulated by an aircraft since its last depot overhaul."@en ;
+    schema:domainIncludes :FighterAircraft, :TransportAircraft ; rdfs:range xsd:decimal .
+:eventDate a owl:DatatypeProperty ; rdfs:label "event date"@en ;
+    rdfs:comment "The date a maintenance event was performed."@en ;
+    schema:domainIncludes :MaintenanceEvent ; rdfs:range xsd:date .
+:workOrderNumber a owl:DatatypeProperty ; rdfs:label "work order number"@en ;
+    rdfs:comment "The number of the work order a maintenance event was performed under, e.g. WO-26-0001."@en ;
+    schema:domainIncludes :MaintenanceEvent ; rdfs:range xsd:string .

@@ -1,0 +1,3 @@
+prefix cco: <https://www.commoncoreontologies.org/>
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix bfo_cco: <urn:stardog:archetype:bfo_cco#>

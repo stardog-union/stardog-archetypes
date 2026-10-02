@@ -1,0 +1,14 @@
+# Does the incoming batch contain anything that is both a thing and an event?
+# Run with reasoning on against both example databases (see ../README.md).
+# expected without archetype: no rows (the bad record passes unnoticed)
+# expected with bfo_cco:      1 row: AF-1011 (typed as both an aircraft and a maintenance event)
+# why: BFO continuants and occurrents are disjoint. The archetype's SHACL shapes report the same error: POST /{db}/icv/report.
+PREFIX : <https://example.org/fleet#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX cco: <https://www.commoncoreontologies.org/>
+PREFIX bfo_cco: <urn:stardog:archetype:bfo_cco#>
+
+SELECT ?record
+FROM <urn:fleet:incoming>
+WHERE { ?x a obo:BFO_0000002 ; a obo:BFO_0000003 ; rdfs:label ?record . }

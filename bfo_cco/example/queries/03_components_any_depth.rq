@@ -1,0 +1,19 @@
+# What is AF-1001 made of, at every level?
+# Run with reasoning on against both example databases (see ../README.md).
+# expected without archetype: no rows
+# expected with bfo_cco:      6 rows: Engine ENG-01, ENG-01 fan module, ENG-01 core module, ENG-01 fan blade set, Targeting pod TP-1, IR camera IRC-1
+# why: installedOn and partOf are aligned to BFO continuant part of; bfo_cco:hasContinuantPartTransitive rolls them up to any depth.
+PREFIX : <https://example.org/fleet#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX cco: <https://www.commoncoreontologies.org/>
+PREFIX bfo_cco: <urn:stardog:archetype:bfo_cco#>
+
+SELECT ?component
+FROM <urn:fleet:kg>
+WHERE {
+  ?aircraft :tailNumber "AF-1001" ;
+            bfo_cco:hasContinuantPartTransitive ?part .
+  ?part rdfs:label ?component .
+}
+ORDER BY ?component

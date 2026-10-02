@@ -1,0 +1,628 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <https://example.org/fleet#> .
+@prefix d: <https://example.org/fleet/data/> .
+
+d:kirtland a :AirBase ;
+    rdfs:label "Kirtland AFB" .
+d:nellis a :AirBase ;
+    rdfs:label "Nellis AFB" .
+d:bliss a :ArmyPost ;
+    rdfs:label "Fort Bliss" .
+d:h1 a :Hangar ;
+    rdfs:label "Hangar 1" ;
+    :locatedAt d:kirtland .
+d:h2 a :Hangar ;
+    rdfs:label "Hangar 2" ;
+    :locatedAt d:kirtland .
+d:h3 a :Hangar ;
+    rdfs:label "Hangar 3" ;
+    :locatedAt d:nellis .
+d:h4 a :Hangar ;
+    rdfs:label "Hangar 4" ;
+    :locatedAt d:nellis .
+d:mp1 a :MotorPool ;
+    rdfs:label "Motor Pool A" ;
+    :locatedAt d:bliss .
+d:af-1001 a :FighterAircraft ;
+    rdfs:label "AF-1001" ;
+    :tailNumber "AF-1001" ;
+    :hoursSinceOverhaul "180.0"^^xsd:decimal ;
+    :housedIn d:h1 .
+d:eng01 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-01" ;
+    :serialNumber "ENG-01" ;
+    :installedOn d:af-1001 .
+d:eng01_fan a :EngineModule ;
+    rdfs:label "ENG-01 fan module" ;
+    :partOf d:eng01 .
+d:eng01_core a :EngineModule ;
+    rdfs:label "ENG-01 core module" ;
+    :partOf d:eng01 .
+d:eng01_blades a :BladeSet ;
+    rdfs:label "ENG-01 fan blade set" ;
+    :partOf d:eng01_fan .
+d:af-1002 a :FighterAircraft ;
+    rdfs:label "AF-1002" ;
+    :tailNumber "AF-1002" ;
+    :hoursSinceOverhaul "317.0"^^xsd:decimal ;
+    :housedIn d:h1 .
+d:eng02 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-02" ;
+    :serialNumber "ENG-02" ;
+    :installedOn d:af-1002 .
+d:eng02_fan a :EngineModule ;
+    rdfs:label "ENG-02 fan module" ;
+    :partOf d:eng02 .
+d:eng02_core a :EngineModule ;
+    rdfs:label "ENG-02 core module" ;
+    :partOf d:eng02 .
+d:eng02_blades a :BladeSet ;
+    rdfs:label "ENG-02 fan blade set" ;
+    :partOf d:eng02_fan .
+d:af-1003 a :FighterAircraft ;
+    rdfs:label "AF-1003" ;
+    :tailNumber "AF-1003" ;
+    :hoursSinceOverhaul "454.0"^^xsd:decimal ;
+    :housedIn d:h1 .
+d:eng03 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-03" ;
+    :serialNumber "ENG-03" ;
+    :installedOn d:af-1003 .
+d:eng03_fan a :EngineModule ;
+    rdfs:label "ENG-03 fan module" ;
+    :partOf d:eng03 .
+d:eng03_core a :EngineModule ;
+    rdfs:label "ENG-03 core module" ;
+    :partOf d:eng03 .
+d:eng03_blades a :BladeSet ;
+    rdfs:label "ENG-03 fan blade set" ;
+    :partOf d:eng03_fan .
+d:af-1004 a :FighterAircraft ;
+    rdfs:label "AF-1004" ;
+    :tailNumber "AF-1004" ;
+    :hoursSinceOverhaul "591.0"^^xsd:decimal ;
+    :housedIn d:h1 .
+d:eng04 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-04" ;
+    :serialNumber "ENG-04" ;
+    :installedOn d:af-1004 .
+d:eng04_fan a :EngineModule ;
+    rdfs:label "ENG-04 fan module" ;
+    :partOf d:eng04 .
+d:eng04_core a :EngineModule ;
+    rdfs:label "ENG-04 core module" ;
+    :partOf d:eng04 .
+d:eng04_blades a :BladeSet ;
+    rdfs:label "ENG-04 fan blade set" ;
+    :partOf d:eng04_fan .
+d:af-1005 a :FighterAircraft ;
+    rdfs:label "AF-1005" ;
+    :tailNumber "AF-1005" ;
+    :hoursSinceOverhaul "728.0"^^xsd:decimal ;
+    :housedIn d:h1 .
+d:eng05 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-05" ;
+    :serialNumber "ENG-05" ;
+    :installedOn d:af-1005 .
+d:eng05_fan a :EngineModule ;
+    rdfs:label "ENG-05 fan module" ;
+    :partOf d:eng05 .
+d:eng05_core a :EngineModule ;
+    rdfs:label "ENG-05 core module" ;
+    :partOf d:eng05 .
+d:eng05_blades a :BladeSet ;
+    rdfs:label "ENG-05 fan blade set" ;
+    :partOf d:eng05_fan .
+d:af-1006 a :FighterAircraft ;
+    rdfs:label "AF-1006" ;
+    :tailNumber "AF-1006" ;
+    :hoursSinceOverhaul "865.0"^^xsd:decimal ;
+    :housedIn d:h3 .
+d:eng06 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-06" ;
+    :serialNumber "ENG-06" ;
+    :installedOn d:af-1006 .
+d:eng06_fan a :EngineModule ;
+    rdfs:label "ENG-06 fan module" ;
+    :partOf d:eng06 .
+d:eng06_core a :EngineModule ;
+    rdfs:label "ENG-06 core module" ;
+    :partOf d:eng06 .
+d:eng06_blades a :BladeSet ;
+    rdfs:label "ENG-06 fan blade set" ;
+    :partOf d:eng06_fan .
+d:af-1007 a :FighterAircraft ;
+    rdfs:label "AF-1007" ;
+    :tailNumber "AF-1007" ;
+    :hoursSinceOverhaul "1002.0"^^xsd:decimal ;
+    :housedIn d:h3 .
+d:eng07 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-07" ;
+    :serialNumber "ENG-07" ;
+    :installedOn d:af-1007 .
+d:eng07_fan a :EngineModule ;
+    rdfs:label "ENG-07 fan module" ;
+    :partOf d:eng07 .
+d:eng07_core a :EngineModule ;
+    rdfs:label "ENG-07 core module" ;
+    :partOf d:eng07 .
+d:eng07_blades a :BladeSet ;
+    rdfs:label "ENG-07 fan blade set" ;
+    :partOf d:eng07_fan .
+d:af-1008 a :FighterAircraft ;
+    rdfs:label "AF-1008" ;
+    :tailNumber "AF-1008" ;
+    :hoursSinceOverhaul "1139.0"^^xsd:decimal ;
+    :housedIn d:h3 .
+d:eng08 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-08" ;
+    :serialNumber "ENG-08" ;
+    :installedOn d:af-1008 .
+d:eng08_fan a :EngineModule ;
+    rdfs:label "ENG-08 fan module" ;
+    :partOf d:eng08 .
+d:eng08_core a :EngineModule ;
+    rdfs:label "ENG-08 core module" ;
+    :partOf d:eng08 .
+d:eng08_blades a :BladeSet ;
+    rdfs:label "ENG-08 fan blade set" ;
+    :partOf d:eng08_fan .
+d:af-1009 a :FighterAircraft ;
+    rdfs:label "AF-1009" ;
+    :tailNumber "AF-1009" ;
+    :hoursSinceOverhaul "1276.0"^^xsd:decimal ;
+    :housedIn d:h4 .
+d:eng09 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-09" ;
+    :serialNumber "ENG-09" ;
+    :installedOn d:af-1009 .
+d:eng09_fan a :EngineModule ;
+    rdfs:label "ENG-09 fan module" ;
+    :partOf d:eng09 .
+d:eng09_core a :EngineModule ;
+    rdfs:label "ENG-09 core module" ;
+    :partOf d:eng09 .
+d:eng09_blades a :BladeSet ;
+    rdfs:label "ENG-09 fan blade set" ;
+    :partOf d:eng09_fan .
+d:af-1010 a :FighterAircraft ;
+    rdfs:label "AF-1010" ;
+    :tailNumber "AF-1010" ;
+    :hoursSinceOverhaul "1413.0"^^xsd:decimal ;
+    :housedIn d:h4 .
+d:eng10 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-10" ;
+    :serialNumber "ENG-10" ;
+    :installedOn d:af-1010 .
+d:eng10_fan a :EngineModule ;
+    rdfs:label "ENG-10 fan module" ;
+    :partOf d:eng10 .
+d:eng10_core a :EngineModule ;
+    rdfs:label "ENG-10 core module" ;
+    :partOf d:eng10 .
+d:eng10_blades a :BladeSet ;
+    rdfs:label "ENG-10 fan blade set" ;
+    :partOf d:eng10_fan .
+d:af-2001 a :TransportAircraft ;
+    rdfs:label "AF-2001" ;
+    :tailNumber "AF-2001" ;
+    :hoursSinceOverhaul "1550.0"^^xsd:decimal ;
+    :housedIn d:h2 .
+d:eng11 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-11" ;
+    :serialNumber "ENG-11" ;
+    :installedOn d:af-2001 .
+d:eng11_fan a :EngineModule ;
+    rdfs:label "ENG-11 fan module" ;
+    :partOf d:eng11 .
+d:eng11_core a :EngineModule ;
+    rdfs:label "ENG-11 core module" ;
+    :partOf d:eng11 .
+d:eng11_blades a :BladeSet ;
+    rdfs:label "ENG-11 fan blade set" ;
+    :partOf d:eng11_fan .
+d:eng12 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-12" ;
+    :serialNumber "ENG-12" ;
+    :installedOn d:af-2001 .
+d:eng12_fan a :EngineModule ;
+    rdfs:label "ENG-12 fan module" ;
+    :partOf d:eng12 .
+d:eng12_core a :EngineModule ;
+    rdfs:label "ENG-12 core module" ;
+    :partOf d:eng12 .
+d:eng12_blades a :BladeSet ;
+    rdfs:label "ENG-12 fan blade set" ;
+    :partOf d:eng12_fan .
+d:eng13 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-13" ;
+    :serialNumber "ENG-13" ;
+    :installedOn d:af-2001 .
+d:eng13_fan a :EngineModule ;
+    rdfs:label "ENG-13 fan module" ;
+    :partOf d:eng13 .
+d:eng13_core a :EngineModule ;
+    rdfs:label "ENG-13 core module" ;
+    :partOf d:eng13 .
+d:eng13_blades a :BladeSet ;
+    rdfs:label "ENG-13 fan blade set" ;
+    :partOf d:eng13_fan .
+d:eng14 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-14" ;
+    :serialNumber "ENG-14" ;
+    :installedOn d:af-2001 .
+d:eng14_fan a :EngineModule ;
+    rdfs:label "ENG-14 fan module" ;
+    :partOf d:eng14 .
+d:eng14_core a :EngineModule ;
+    rdfs:label "ENG-14 core module" ;
+    :partOf d:eng14 .
+d:eng14_blades a :BladeSet ;
+    rdfs:label "ENG-14 fan blade set" ;
+    :partOf d:eng14_fan .
+d:af-2002 a :TransportAircraft ;
+    rdfs:label "AF-2002" ;
+    :tailNumber "AF-2002" ;
+    :hoursSinceOverhaul "1687.0"^^xsd:decimal ;
+    :housedIn d:h2 .
+d:eng15 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-15" ;
+    :serialNumber "ENG-15" ;
+    :installedOn d:af-2002 .
+d:eng15_fan a :EngineModule ;
+    rdfs:label "ENG-15 fan module" ;
+    :partOf d:eng15 .
+d:eng15_core a :EngineModule ;
+    rdfs:label "ENG-15 core module" ;
+    :partOf d:eng15 .
+d:eng15_blades a :BladeSet ;
+    rdfs:label "ENG-15 fan blade set" ;
+    :partOf d:eng15_fan .
+d:eng16 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-16" ;
+    :serialNumber "ENG-16" ;
+    :installedOn d:af-2002 .
+d:eng16_fan a :EngineModule ;
+    rdfs:label "ENG-16 fan module" ;
+    :partOf d:eng16 .
+d:eng16_core a :EngineModule ;
+    rdfs:label "ENG-16 core module" ;
+    :partOf d:eng16 .
+d:eng16_blades a :BladeSet ;
+    rdfs:label "ENG-16 fan blade set" ;
+    :partOf d:eng16_fan .
+d:eng17 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-17" ;
+    :serialNumber "ENG-17" ;
+    :installedOn d:af-2002 .
+d:eng17_fan a :EngineModule ;
+    rdfs:label "ENG-17 fan module" ;
+    :partOf d:eng17 .
+d:eng17_core a :EngineModule ;
+    rdfs:label "ENG-17 core module" ;
+    :partOf d:eng17 .
+d:eng17_blades a :BladeSet ;
+    rdfs:label "ENG-17 fan blade set" ;
+    :partOf d:eng17_fan .
+d:eng18 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-18" ;
+    :serialNumber "ENG-18" ;
+    :installedOn d:af-2002 .
+d:eng18_fan a :EngineModule ;
+    rdfs:label "ENG-18 fan module" ;
+    :partOf d:eng18 .
+d:eng18_core a :EngineModule ;
+    rdfs:label "ENG-18 core module" ;
+    :partOf d:eng18 .
+d:eng18_blades a :BladeSet ;
+    rdfs:label "ENG-18 fan blade set" ;
+    :partOf d:eng18_fan .
+d:af-2003 a :TransportAircraft ;
+    rdfs:label "AF-2003" ;
+    :tailNumber "AF-2003" ;
+    :hoursSinceOverhaul "1824.0"^^xsd:decimal ;
+    :housedIn d:h4 .
+d:eng19 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-19" ;
+    :serialNumber "ENG-19" ;
+    :installedOn d:af-2003 .
+d:eng19_fan a :EngineModule ;
+    rdfs:label "ENG-19 fan module" ;
+    :partOf d:eng19 .
+d:eng19_core a :EngineModule ;
+    rdfs:label "ENG-19 core module" ;
+    :partOf d:eng19 .
+d:eng19_blades a :BladeSet ;
+    rdfs:label "ENG-19 fan blade set" ;
+    :partOf d:eng19_fan .
+d:eng20 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-20" ;
+    :serialNumber "ENG-20" ;
+    :installedOn d:af-2003 .
+d:eng20_fan a :EngineModule ;
+    rdfs:label "ENG-20 fan module" ;
+    :partOf d:eng20 .
+d:eng20_core a :EngineModule ;
+    rdfs:label "ENG-20 core module" ;
+    :partOf d:eng20 .
+d:eng20_blades a :BladeSet ;
+    rdfs:label "ENG-20 fan blade set" ;
+    :partOf d:eng20_fan .
+d:eng21 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-21" ;
+    :serialNumber "ENG-21" ;
+    :installedOn d:af-2003 .
+d:eng21_fan a :EngineModule ;
+    rdfs:label "ENG-21 fan module" ;
+    :partOf d:eng21 .
+d:eng21_core a :EngineModule ;
+    rdfs:label "ENG-21 core module" ;
+    :partOf d:eng21 .
+d:eng21_blades a :BladeSet ;
+    rdfs:label "ENG-21 fan blade set" ;
+    :partOf d:eng21_fan .
+d:eng22 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-22" ;
+    :serialNumber "ENG-22" ;
+    :installedOn d:af-2003 .
+d:eng22_fan a :EngineModule ;
+    rdfs:label "ENG-22 fan module" ;
+    :partOf d:eng22 .
+d:eng22_core a :EngineModule ;
+    rdfs:label "ENG-22 core module" ;
+    :partOf d:eng22 .
+d:eng22_blades a :BladeSet ;
+    rdfs:label "ENG-22 fan blade set" ;
+    :partOf d:eng22_fan .
+d:af-2004 a :TransportAircraft ;
+    rdfs:label "AF-2004" ;
+    :tailNumber "AF-2004" ;
+    :hoursSinceOverhaul "1961.0"^^xsd:decimal ;
+    :housedIn d:h4 .
+d:eng23 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-23" ;
+    :serialNumber "ENG-23" ;
+    :installedOn d:af-2004 .
+d:eng23_fan a :EngineModule ;
+    rdfs:label "ENG-23 fan module" ;
+    :partOf d:eng23 .
+d:eng23_core a :EngineModule ;
+    rdfs:label "ENG-23 core module" ;
+    :partOf d:eng23 .
+d:eng23_blades a :BladeSet ;
+    rdfs:label "ENG-23 fan blade set" ;
+    :partOf d:eng23_fan .
+d:eng24 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-24" ;
+    :serialNumber "ENG-24" ;
+    :installedOn d:af-2004 .
+d:eng24_fan a :EngineModule ;
+    rdfs:label "ENG-24 fan module" ;
+    :partOf d:eng24 .
+d:eng24_core a :EngineModule ;
+    rdfs:label "ENG-24 core module" ;
+    :partOf d:eng24 .
+d:eng24_blades a :BladeSet ;
+    rdfs:label "ENG-24 fan blade set" ;
+    :partOf d:eng24_fan .
+d:eng25 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-25" ;
+    :serialNumber "ENG-25" ;
+    :installedOn d:af-2004 .
+d:eng25_fan a :EngineModule ;
+    rdfs:label "ENG-25 fan module" ;
+    :partOf d:eng25 .
+d:eng25_core a :EngineModule ;
+    rdfs:label "ENG-25 core module" ;
+    :partOf d:eng25 .
+d:eng25_blades a :BladeSet ;
+    rdfs:label "ENG-25 fan blade set" ;
+    :partOf d:eng25_fan .
+d:eng26 a :TurbofanEngine ;
+    rdfs:label "Engine ENG-26" ;
+    :serialNumber "ENG-26" ;
+    :installedOn d:af-2004 .
+d:eng26_fan a :EngineModule ;
+    rdfs:label "ENG-26 fan module" ;
+    :partOf d:eng26 .
+d:eng26_core a :EngineModule ;
+    rdfs:label "ENG-26 core module" ;
+    :partOf d:eng26 .
+d:eng26_blades a :BladeSet ;
+    rdfs:label "ENG-26 fan blade set" ;
+    :partOf d:eng26_fan .
+d:pod1 a :TargetingPod ;
+    rdfs:label "Targeting pod TP-1" ;
+    :installedOn d:af-1001 .
+d:cam1 a :InfraredCamera ;
+    rdfs:label "IR camera IRC-1" ;
+    :partOf d:pod1 ;
+    :hasCapability d:cam1_cap .
+d:cam1_cap a :SensorCapability ;
+    rdfs:label "IRC-1 infrared imaging capability" .
+d:af-1001_spr a :SensorPlatformRole ;
+    rdfs:label "AF-1001 sensor platform role" .
+d:af-1001 :hasRole d:af-1001_spr .
+d:pod2 a :TargetingPod ;
+    rdfs:label "Targeting pod TP-2" ;
+    :installedOn d:af-1002 .
+d:cam2 a :InfraredCamera ;
+    rdfs:label "IR camera IRC-2" ;
+    :partOf d:pod2 ;
+    :hasCapability d:cam2_cap .
+d:cam2_cap a :SensorCapability ;
+    rdfs:label "IRC-2 infrared imaging capability" .
+d:af-1002_spr a :SensorPlatformRole ;
+    rdfs:label "AF-1002 sensor platform role" .
+d:af-1002 :hasRole d:af-1002_spr .
+d:pod3 a :TargetingPod ;
+    rdfs:label "Targeting pod TP-3" ;
+    :installedOn d:af-1003 .
+d:cam3 a :InfraredCamera ;
+    rdfs:label "IR camera IRC-3" ;
+    :partOf d:pod3 ;
+    :hasCapability d:cam3_cap .
+d:cam3_cap a :SensorCapability ;
+    rdfs:label "IRC-3 infrared imaging capability" .
+d:af-1003_spr a :SensorPlatformRole ;
+    rdfs:label "AF-1003 sensor platform role" .
+d:af-1003 :hasRole d:af-1003_spr .
+d:pod4 a :TargetingPod ;
+    rdfs:label "Targeting pod TP-4" ;
+    :installedOn d:af-1004 .
+d:cam4 a :InfraredCamera ;
+    rdfs:label "IR camera IRC-4" ;
+    :partOf d:pod4 ;
+    :hasCapability d:cam4_cap .
+d:cam4_cap a :SensorCapability ;
+    rdfs:label "IRC-4 infrared imaging capability" .
+d:af-1004_spr a :SensorPlatformRole ;
+    rdfs:label "AF-1004 sensor platform role" .
+d:af-1004 :hasRole d:af-1004_spr .
+d:pod5 a :TargetingPod ;
+    rdfs:label "Targeting pod TP-5" ;
+    :installedOn d:af-1005 .
+d:cam5 a :InfraredCamera ;
+    rdfs:label "IR camera IRC-5" ;
+    :partOf d:pod5 ;
+    :hasCapability d:cam5_cap .
+d:cam5_cap a :SensorCapability ;
+    rdfs:label "IRC-5 infrared imaging capability" .
+d:af-1005_spr a :SensorPlatformRole ;
+    rdfs:label "AF-1005 sensor platform role" .
+d:af-1005 :hasRole d:af-1005_spr .
+d:pod6 a :TargetingPod ;
+    rdfs:label "Targeting pod TP-6" ;
+    :installedOn d:af-1006 .
+d:cam6 a :InfraredCamera ;
+    rdfs:label "IR camera IRC-6" ;
+    :partOf d:pod6 ;
+    :hasCapability d:cam6_cap .
+d:cam6_cap a :SensorCapability ;
+    rdfs:label "IRC-6 infrared imaging capability" .
+d:af-1006_spr a :SensorPlatformRole ;
+    rdfs:label "AF-1006 sensor platform role" .
+d:af-1006 :hasRole d:af-1006_spr .
+d:tk01 a :MainBattleTank ;
+    rdfs:label "Tank TK-01" ;
+    :serialNumber "TK-01" ;
+    :housedIn d:mp1 .
+d:tk02 a :MainBattleTank ;
+    rdfs:label "Tank TK-02" ;
+    :serialNumber "TK-02" ;
+    :housedIn d:mp1 .
+d:tk03 a :MainBattleTank ;
+    rdfs:label "Tank TK-03" ;
+    :serialNumber "TK-03" ;
+    :housedIn d:mp1 .
+d:tk04 a :MainBattleTank ;
+    rdfs:label "Tank TK-04" ;
+    :serialNumber "TK-04" ;
+    :housedIn d:mp1 .
+d:tk05 a :MainBattleTank ;
+    rdfs:label "Tank TK-05" ;
+    :serialNumber "TK-05" ;
+    :housedIn d:mp1 .
+d:tk06 a :MainBattleTank ;
+    rdfs:label "Tank TK-06" ;
+    :serialNumber "TK-06" ;
+    :housedIn d:mp1 .
+d:tr01 a :TacticalTruck ;
+    rdfs:label "Truck TR-01" ;
+    :serialNumber "TR-01" ;
+    :housedIn d:mp1 .
+d:tr02 a :TacticalTruck ;
+    rdfs:label "Truck TR-02" ;
+    :serialNumber "TR-02" ;
+    :housedIn d:mp1 .
+d:tr03 a :TacticalTruck ;
+    rdfs:label "Truck TR-03" ;
+    :serialNumber "TR-03" ;
+    :housedIn d:mp1 .
+d:tr04 a :TacticalTruck ;
+    rdfs:label "Truck TR-04" ;
+    :serialNumber "TR-04" ;
+    :housedIn d:mp1 .
+d:tr05 a :TacticalTruck ;
+    rdfs:label "Truck TR-05" ;
+    :serialNumber "TR-05" ;
+    :housedIn d:mp1 .
+d:sat1 a :ReconSatellite ;
+    rdfs:label "Satellite SAT-1" ;
+    :serialNumber "SAT-1" ;
+    :hasCapability d:sat1_cap ;
+    :hasRole d:sat1_spr .
+d:sat1_cap a :SensorCapability ;
+    rdfs:label "SAT-1 imaging capability" .
+d:sat1_spr a :SensorPlatformRole ;
+    rdfs:label "SAT-1 sensor platform role" .
+d:sat2 a :ReconSatellite ;
+    rdfs:label "Satellite SAT-2" ;
+    :serialNumber "SAT-2" ;
+    :hasCapability d:sat2_cap ;
+    :hasRole d:sat2_spr .
+d:sat2_cap a :SensorCapability ;
+    rdfs:label "SAT-2 imaging capability" .
+d:sat2_spr a :SensorPlatformRole ;
+    rdfs:label "SAT-2 sensor platform role" .
+d:mx01 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0001" ;
+    :workOrderNumber "WO-26-0001" ;
+    :eventDate "2026-07-06"^^xsd:date ;
+    :performedOn d:af-1001 .
+d:mx02 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0002" ;
+    :workOrderNumber "WO-26-0002" ;
+    :eventDate "2026-07-20"^^xsd:date ;
+    :performedOn d:af-1003 .
+d:mx03 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0003" ;
+    :workOrderNumber "WO-26-0003" ;
+    :eventDate "2026-07-29"^^xsd:date ;
+    :performedOn d:af-2001 .
+d:mx04 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0004" ;
+    :workOrderNumber "WO-26-0004" ;
+    :eventDate "2026-08-03"^^xsd:date ;
+    :performedOn d:tk01 .
+d:mx05 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0005" ;
+    :workOrderNumber "WO-26-0005" ;
+    :eventDate "2026-08-11"^^xsd:date ;
+    :performedOn d:af-1006 .
+d:mx06 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0006" ;
+    :workOrderNumber "WO-26-0006" ;
+    :eventDate "2026-08-18"^^xsd:date ;
+    :performedOn d:af-1002 .
+d:mx07 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0007" ;
+    :workOrderNumber "WO-26-0007" ;
+    :eventDate "2026-08-25"^^xsd:date ;
+    :performedOn d:tr02 .
+d:mx08 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0008" ;
+    :workOrderNumber "WO-26-0008" ;
+    :eventDate "2026-08-31"^^xsd:date ;
+    :performedOn d:af-2003 .
+d:mx09 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0009" ;
+    :workOrderNumber "WO-26-0009" ;
+    :eventDate "2026-09-02"^^xsd:date ;
+    :performedOn d:af-1009 .
+d:mx10 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0010" ;
+    :workOrderNumber "WO-26-0010" ;
+    :eventDate "2026-09-09"^^xsd:date ;
+    :performedOn d:tk04 .
+d:mx11 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0011" ;
+    :workOrderNumber "WO-26-0011" ;
+    :eventDate "2026-09-15"^^xsd:date ;
+    :performedOn d:af-1001 .
+d:mx12 a :MaintenanceEvent ;
+    rdfs:label "Maintenance WO-26-0012" ;
+    :workOrderNumber "WO-26-0012" ;
+    :eventDate "2026-09-22"^^xsd:date ;
+    :performedOn d:af-2004 .

@@ -1,0 +1,17 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <https://example.org/fleet#> .
+@prefix d: <https://example.org/fleet/data/> .
+
+# An incoming batch waiting to be validated before it is merged into urn:fleet:kg.
+# Loaded into its own graph (urn:fleet:incoming) so it never changes the fleet counts.
+# AF-1011 is a mapping error: a maintenance-log row was keyed to the aircraft's IRI, so the
+# aircraft is also typed as a maintenance event. Only BFO's continuant/occurrent
+# disjointness (via the bfo_cco archetype) can tell that this is impossible.
+
+d:af-1011 a :FighterAircraft, :MaintenanceEvent ;
+    rdfs:label "AF-1011" ;
+    :tailNumber "AF-1011" .
+
+d:af-1012 a :FighterAircraft ;
+    rdfs:label "AF-1012" ;
+    :tailNumber "AF-1012" .

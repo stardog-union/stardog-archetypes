@@ -1,0 +1,15 @@
+[
+  {"id": "V1", "kind": "cco", "q": "How many vehicles are in the fleet, broken down by vehicle type: aircraft, ground vehicles and spacecraft?", "expect_all": ["14", "11", "2"]},
+  {"id": "V2", "kind": "cco", "q": "How many sensors do we have?", "expect_all": ["8"]},
+  {"id": "V3", "kind": "cco", "q": "List every component of aircraft AF-1001, including sub-components at any depth.", "expect_all": ["ENG-01", "fan module", "core module", "blade", "TP-1", "IRC-1"]},
+  {"id": "V4", "kind": "cco", "q": "How many aircraft are at Kirtland AFB, counting the ones in its hangars?", "expect_all": ["7"]},
+  {"id": "V5", "kind": "cco", "q": "How many physical objects are recorded in total, including facilities, vehicles and all of their components?", "expect_all": ["151"]},
+  {"id": "V6", "kind": "cco", "q": "Which sensor platforms do we have?", "expect_all": ["AF-1001", "AF-1002", "AF-1003", "AF-1004", "AF-1005", "AF-1006", "SAT-1", "SAT-2"]},
+  {"id": "V7", "kind": "cco", "q": "How many engine sub-components are there in total, counting every part of every engine at any depth?", "expect_all": ["78"]},
+  {"id": "D1", "kind": "domain", "q": "How many fighter aircraft are there?", "expect_all": ["10"]},
+  {"id": "D2", "kind": "domain", "q": "Which aircraft has the most hours since its last overhaul, and how many hours is that?", "expect_all": ["AF-2004", "1961"]},
+  {"id": "D3", "kind": "domain", "q": "List the main battle tanks and their serial numbers.", "expect_all": ["TK-01", "TK-02", "TK-03", "TK-04", "TK-05", "TK-06"]},
+  {"id": "D4", "kind": "domain", "q": "How many maintenance events took place in August 2026?", "expect_all": ["5"]},
+  {"id": "D5", "kind": "domain", "q": "What is the average hours since overhaul for the transport aircraft?", "expect_all": ["1755.5"]},
+  {"id": "D6", "kind": "domain", "q": "Which aircraft are housed in Hangar 3?", "expect_all": ["AF-1006", "AF-1007", "AF-1008"]}
+]

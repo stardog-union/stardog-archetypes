@@ -1,0 +1,112 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix cco: <https://www.commoncoreontologies.org/> .
+@prefix bfo_cco: <urn:stardog:archetype:bfo_cco#> .
+
+# Stardog-specific supplements to BFO 2020 + CCO v2.2 (CommonCoreOntologiesMerged.ttl).
+#
+# Stardog's SL reasoner skips 38 axioms in the merged file ("Not a valid SL axiom"
+# at WARN in stardog.log). This file restores the useful inferences that are lost
+# using only SL-valid axioms, so they work with reasoning.approximate=false.
+# The skipped Domain/Range/SubClassOf axioms that use unions or universal
+# restrictions are deliberately NOT approximated (see README.md).
+
+# ---------------------------------------------------------------------------
+# 1. Transitive closures of continuant parthood and location
+#
+# BFO 2020 defines "continuant part of" and "located in" as holding "at some time",
+# so they are not transitive and BFO rightly does not declare them so (a part of
+# an engine at t1, the engine part of an aircraft at t2, does not make the part
+# part of the aircraft at any time). Asserting owl:TransitiveProperty on the BFO
+# IRIs would change BFO's meaning. Instead each relation gets an archetype-owned
+# transitive super-property: its closure. Query these for "directly or indirectly"
+# roll-ups; the BFO relations keep their exact meaning. Sub-properties (member part
+# of, spatial part of, ...) feed the closure too.
+
+bfo_cco:continuantPartOfTransitive a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:label "continuant part of (directly or indirectly)"@en ;
+    rdfs:comment "Transitive closure of BFO continuant part of: b is related to c if a chain of one or more continuant part of assertions (or its sub-properties, e.g. member part of, spatial part of) links b to c. Use it to find everything a thing is a component of, at any depth. Each link holds at some time; the chain does not claim all links hold at the same time."@en ;
+    owl:inverseOf bfo_cco:hasContinuantPartTransitive .
+bfo_cco:hasContinuantPartTransitive a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:label "has continuant part (directly or indirectly)"@en ;
+    rdfs:comment "Transitive closure of BFO has continuant part: every component, sub-component, sub-sub-component, and so on, of a thing. Inverse of continuant part of (directly or indirectly)."@en .
+obo:BFO_0000176 rdfs:subPropertyOf bfo_cco:continuantPartOfTransitive .   # continuant part of
+obo:BFO_0000178 rdfs:subPropertyOf bfo_cco:hasContinuantPartTransitive .  # has continuant part
+
+bfo_cco:locatedInTransitive a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:label "located in (directly or indirectly)"@en ;
+    rdfs:comment "Transitive closure of BFO located in: b is related to c if a chain of one or more located in assertions links b to c (e.g. a sensor located in a facility located in a base). Each link holds at some time; the chain does not claim all links hold at the same time."@en ;
+    owl:inverseOf bfo_cco:locationOfTransitive .
+bfo_cco:locationOfTransitive a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:label "location of (directly or indirectly)"@en ;
+    rdfs:comment "Transitive closure of BFO location of: everything located in a thing at any depth. Inverse of located in (directly or indirectly)."@en .
+obo:BFO_0000171 rdfs:subPropertyOf bfo_cco:locatedInTransitive .   # located in
+obo:BFO_0000124 rdfs:subPropertyOf bfo_cco:locationOfTransitive .  # location of
+
+# ---------------------------------------------------------------------------
+# 2. Sufficient conditions for the five CCO defined classes
+#
+# Each is defined with owl:equivalentClass over a union, which is not SL-valid, so
+# Stardog drops the whole axiom and nothing is ever classified into the class.
+# The necessary direction (e.g. Sensor subClassOf material entity) is asserted
+# separately in CCO and still applies. Here each union is split into one SL-valid
+# sufficient condition per disjunct.
+
+# Sensor = material entity and bearer of some (Sensor Function or Sensor Role)
+[ a owl:Class ; owl:intersectionOf ( obo:BFO_0000040
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000196 ; owl:someValuesFrom cco:ont00001241 ] ) ]
+    rdfs:subClassOf cco:ont00000569 .
+[ a owl:Class ; owl:intersectionOf ( obo:BFO_0000040
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000196 ; owl:someValuesFrom cco:ont00002073 ] ) ]
+    rdfs:subClassOf cco:ont00000569 .
+
+# Sensor Platform = material entity and bearer of some
+#   (Sensor Deployment Artifact Function or Sensor Platform Role)
+[ a owl:Class ; owl:intersectionOf ( obo:BFO_0000040
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000196 ; owl:someValuesFrom cco:ont00000023 ] ) ]
+    rdfs:subClassOf cco:ont00000021 .
+[ a owl:Class ; owl:intersectionOf ( obo:BFO_0000040
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000196 ; owl:someValuesFrom cco:ont00002074 ] ) ]
+    rdfs:subClassOf cco:ont00000021 .
+
+# Sensing Process = process and realizes some (Sensor Function or Sensor Role)
+[ a owl:Class ; owl:intersectionOf ( obo:BFO_0000015
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000055 ; owl:someValuesFrom cco:ont00001241 ] ) ]
+    rdfs:subClassOf cco:ont00002075 .
+[ a owl:Class ; owl:intersectionOf ( obo:BFO_0000015
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000055 ; owl:someValuesFrom cco:ont00002073 ] ) ]
+    rdfs:subClassOf cco:ont00002075 .
+
+# Planned Act = Act and realizes some ((disposition or role) and concretizes some
+#   Prescriptive Information Content Entity)
+[ a owl:Class ; owl:intersectionOf ( cco:ont00000005
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000055 ;
+        owl:someValuesFrom [ a owl:Class ; owl:intersectionOf ( obo:BFO_0000016
+            [ a owl:Restriction ; owl:onProperty obo:BFO_0000059 ; owl:someValuesFrom cco:ont00000965 ] ) ] ] ) ]
+    rdfs:subClassOf cco:ont00000228 .
+[ a owl:Class ; owl:intersectionOf ( cco:ont00000005
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000055 ;
+        owl:someValuesFrom [ a owl:Class ; owl:intersectionOf ( obo:BFO_0000023
+            [ a owl:Restriction ; owl:onProperty obo:BFO_0000059 ; owl:someValuesFrom cco:ont00000965 ] ) ] ] ) ]
+    rdfs:subClassOf cco:ont00000228 .
+
+# Geospatial Location = Geospatial Region and (location of some (independent
+#   continuant and not spatial region) or environs some process).
+# "independent continuant and not spatial region" is not SL-expressible; under BFO
+# it is covered by material entity, site and continuant fiat boundary, so it is
+# split into those three. An individual typed only as independent continuant is
+# therefore not classified (sound, slightly incomplete).
+[ a owl:Class ; owl:intersectionOf ( cco:ont00000472
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000124 ; owl:someValuesFrom obo:BFO_0000040 ] ) ]
+    rdfs:subClassOf cco:ont00000487 .
+[ a owl:Class ; owl:intersectionOf ( cco:ont00000472
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000124 ; owl:someValuesFrom obo:BFO_0000029 ] ) ]
+    rdfs:subClassOf cco:ont00000487 .
+[ a owl:Class ; owl:intersectionOf ( cco:ont00000472
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000124 ; owl:someValuesFrom obo:BFO_0000140 ] ) ]
+    rdfs:subClassOf cco:ont00000487 .
+[ a owl:Class ; owl:intersectionOf ( cco:ont00000472
+      [ a owl:Restriction ; owl:onProperty obo:BFO_0000183 ; owl:someValuesFrom obo:BFO_0000015 ] ) ]
+    rdfs:subClassOf cco:ont00000487 .

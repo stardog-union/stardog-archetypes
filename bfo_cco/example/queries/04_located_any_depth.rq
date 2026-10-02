@@ -1,0 +1,18 @@
+# What is at Kirtland AFB, including everything inside its hangars?
+# Run with reasoning on against both example databases (see ../README.md).
+# expected without archetype: no rows
+# expected with bfo_cco:      9 rows: Hangar 1, Hangar 2 and aircraft AF-1001..AF-1005, AF-2001, AF-2002
+# why: housedIn and locatedAt are aligned to BFO located in; bfo_cco:locatedInTransitive answers at any depth.
+PREFIX : <https://example.org/fleet#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX cco: <https://www.commoncoreontologies.org/>
+PREFIX bfo_cco: <urn:stardog:archetype:bfo_cco#>
+
+SELECT ?item
+FROM <urn:fleet:kg>
+WHERE {
+  ?base rdfs:label "Kirtland AFB" .
+  ?x bfo_cco:locatedInTransitive ?base ; rdfs:label ?item .
+}
+ORDER BY ?item

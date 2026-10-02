@@ -1,0 +1,21 @@
+# How much physical stuff is tracked, by category?
+# Run with reasoning on against both example databases (see ../README.md).
+# expected without archetype: no rows
+# expected with bfo_cco:      All material entities (BFO) 151, Vehicle 27, Engine 26, Facility 8, Imaging Instrument 6
+# why: BFO material entity is the top of everything physical; CCO supplies the middle categories.
+PREFIX : <https://example.org/fleet#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX cco: <https://www.commoncoreontologies.org/>
+PREFIX bfo_cco: <urn:stardog:archetype:bfo_cco#>
+
+SELECT ?category (COUNT(DISTINCT ?x) AS ?count)
+FROM <urn:fleet:kg>
+WHERE {
+  { ?x a obo:BFO_0000040 . BIND("All material entities (BFO)" AS ?category) }
+  UNION { ?x a cco:ont00000713 . BIND("Vehicle (CCO)" AS ?category) }
+  UNION { ?x a cco:ont00000210 . BIND("Engine (CCO)" AS ?category) }
+  UNION { ?x a cco:ont00000192 . BIND("Facility (CCO)" AS ?category) }
+  UNION { ?x a cco:ont00000771 . BIND("Imaging Instrument (CCO)" AS ?category) }
+}
+GROUP BY ?category ORDER BY DESC(?count)
